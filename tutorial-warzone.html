@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tutorial Warzone - Centro de Recursos Pro</title>
+    <title>Tutorial: Blitz Warzone - Centro de Recursos Pro</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -42,8 +42,6 @@
         .warning strong { color: #ff6666; }
         .success { background: rgba(0, 212, 255, 0.08); border-left: 4px solid #00d4ff; padding: 15px; margin: 20px 0; border-radius: 5px; }
         .success strong { color: #00d4ff; }
-        .info { background: rgba(157, 0, 255, 0.1); border-left: 4px solid #9d00ff; padding: 15px; margin: 20px 0; border-radius: 5px; }
-        .info strong { color: #c300ff; }
         ol, ul { margin-left: 30px; margin-bottom: 15px; color: #b0b0ff; line-height: 1.8; }
         li { margin-bottom: 10px; }
         .step { background: rgba(157, 0, 255, 0.07); border-left: 4px solid #9d00ff; padding: 20px; margin: 20px 0; border-radius: 5px; }
@@ -57,11 +55,11 @@
             border-radius: 5px;
             text-decoration: none;
             font-weight: bold;
-            margin: 20px 0;
+            margin: 10px 5px;
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
-            font-size: 1.1em;
+            font-size: 1em;
         }
         .download-button:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(0, 212, 255, 0.8); }
         .back-button {
@@ -79,17 +77,12 @@
         }
         .back-button:hover { transform: scale(1.05); box-shadow: 0 0 15px rgba(0, 212, 255, 0.6); }
         footer { text-align: center; padding: 20px; color: #8080aa; margin-top: 40px; border-top: 1px solid #300066; }
-        code { background: rgba(0, 212, 255, 0.1); color: #00d4ff; padding: 2px 6px; border-radius: 3px; }
-        @media (max-width: 768px) {
-            header h1 { font-size: 1.8em; }
-            section { padding: 20px; }
-            h2 { font-size: 1.4em; }
-        }
+        strong { color: #ff6666; }
     </style>
 </head>
 <body>
     <header>
-        <h1>🎮 Tutorial: Warzone</h1>
+        <h1>🎮 Tutorial: Blitz Warzone</h1>
         <div class="breadcrumb">
             <a onclick="window.location.href='index.html'">← Voltar para Home</a> | Atualizado em Fevereiro 2026
         </div>
@@ -98,177 +91,93 @@
     <div class="container">
         <button class="back-button" onclick="window.location.href='index.html'">← Voltar para Home</button>
 
-        <div style="text-align: center; margin: 30px 0;">
-            <img src="https://storage.mginex.cloud/4c760c68-116f-4694-8b96-a766ca30a37c.png" alt="Warzone Tutorial" style="width: 100%; max-width: 600px; border-radius: 10px; border: 2px solid #9d00ff; box-shadow: 0 0 20px rgba(157, 0, 255, 0.4);" onerror="this.style.display='none'" />
-        </div>
-
         <section>
             <h2>📌 Introdução</h2>
             <p>
-                Bem-vindo ao tutorial completo do <strong>Warzone</strong>! Este é um guia passo-a-passo que vai te ensinar como instalar, configurar e otimizar o Warzone para melhor desempenho.
-            </p>
-            <p>
-                Se você é iniciante, não se preocupe! Vamos abordar tudo desde o zero, incluindo como configurar corretamente e resolver problemas comuns.
+                Tutorial completo do <strong>Blitz Warzone</strong> (loader simples de gravação de tela). 
+                Siga exatamente os passos para injetar corretamente e evitar problemas.
             </p>
         </section>
 
-        <section>
-            <h2>📋 O que você vai aprender</h2>
+        <div class="warning">
+            <h2>⚠️ REGRAS DE SEGURANÇA OBRIGATÓRIAS</h2>
+            <p>É <strong>EXTREMAMENTE IMPORTANTE</strong> seguir para evitar ban ou suspensão:</p>
             <ul>
-                <li>✅ Como fazer download do Warzone</li>
-                <li>✅ Requisitos mínimos e recomendados</li>
-                <li>✅ Instalação passo-a-passo</li>
-                <li>✅ Otimização de gráficos</li>
-                <li>✅ Configuração de controles</li>
-                <li>✅ Troubleshooting: resolva erros comuns</li>
+                <li>Não fale sobre o loader na partida ou em chat.</li>
+                <li>Não execute o loader dentro da partida.</li>
+                <li>Evite usar em conta smurf de elo baixo (pode ser detectado por reports manuais/acumulados).</li>
+                <li>Não fale no TikTok/live que usa o loader (pode denunciar na maldade) – esconda nickname se for gravar.</li>
+                <li>Não habilite Hyper-V ou virtualização com o jogo instalado (contate o suporte antes se precisar mexer).</li>
+                <li>Não fique AFK na base (pode gerar reports).</li>
+            </ul>
+        </div>
+
+        <section>
+            <h2>1️⃣ Download e Preparação</h2>
+            <p>Clique abaixo para baixar o loader e extraia com a senha.</p>
+            
+            <div style="text-align:center; margin: 30px 0;">
+                <a href="https://gofile.io/d/yHE4r2" class="download-button" target="_blank">
+                    📥 BAIXAR BLITZ WARZONE (Gofile)
+                </a>
+            </div>
+            
+            <div class="success" style="text-align:center; font-size:1.2em;">
+                Senha para extrair: <strong>123</strong>
+            </div>
+            
+            <ul>
+                <li>Extraia com WinRAR ou 7-Zip.</li>
+                <li>Abra a pasta extraída.</li>
             </ul>
         </section>
 
         <section>
-            <h2>🔧 Requisitos Mínimos</h2>
-            <h3>Sistema Operacional:</h3>
+            <h2>2️⃣ Desativar Antivírus</h2>
+            <p><strong>OBRIGATÓRIO</strong> desativar Windows Defender e qualquer antivírus antes de abrir o loader (senão deleta o arquivo).</p>
             <ul>
-                <li><strong>Windows 10/11</strong> (64 bits)</li>
+                <li>Pesquise por <strong>Segurança do Windows</strong>.</li>
+                <li>Vá em <strong>Proteção contra vírus e ameaças</strong>.</li>
+                <li><strong>Gerenciar configurações</strong> → Desative <strong>TODAS</strong> as opções de proteção em tempo real.</li>
+                <li>Se tiver antivírus de terceiros, desinstale temporariamente.</li>
             </ul>
-            <h3>Hardware:</h3>
-            <ul>
-                <li><strong>CPU:</strong> Intel Core i5 ou AMD Ryzen 5</li>
-                <li><strong>RAM:</strong> Mínimo 8GB (16GB recomendado)</li>
-                <li><strong>GPU:</strong> NVIDIA GTX 960 / AMD R9 390 ou superior</li>
-                <li><strong>Espaço em disco:</strong> 150GB SSD (rápido recomendado)</li>
-            </ul>
-            <div class="info">
-                <strong>💡 Dica:</strong> SSD faz grande diferença nos tempos de carregamento do Warzone.
-            </div>
         </section>
 
         <section>
-            <h2>📥 Passo 1: Download</h2>
-            <div class="step">
-                <span class="step-number">1</span>
-                <span class="step-title">Faça o Download do Warzone</span>
-            </div>
-            <p>O Warzone é disponibilizado através do <strong>Battle.net</strong>. Siga os passos:</p>
+            <h2>3️⃣ Instalar Visual C++ Redistributable</h2>
+            <p>Instale para evitar erros de DLL ou falha no loader.</p>
+            <ul>
+                <li>Baixe o pacote All-in-One recomendado: <a href="https://www.techpowerup.com/download/visual-c-redistributable-runtime-package-all-in-one/" target="_blank" style="color:#00d4ff;">Link TechPowerUp</a></li>
+                <li>Ou direto Microsoft (x64): <a href="https://aka.ms/vs/17/release/vc_redist.x64.exe" target="_blank" style="color:#00d4ff;">Visual C++ 2022</a></li>
+                <li>Execute como administrador.</li>
+                <li>Reinicie o PC após instalar.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>4️⃣ Iniciar o Loader e o Jogo</h2>
             <ol>
-                <li>Acesse <strong>www.battle.net</strong></li>
-                <li>Clique em <strong>Baixar</strong> ou <strong>Instalar</strong></li>
-                <li>Faça login ou crie sua conta Blizzard</li>
-                <li>Procure por <strong>Call of Duty: Warzone</strong></li>
-                <li>Clique em <strong>Instalar</strong></li>
+                <li><strong>1º</strong> ABRA O LOADER</li>
+                <li><strong>2º</strong> INSIRA A KEY</li>
+                <li><strong>3º</strong> AGUARDE ATÉ ELE SOLICITAR PARA ABRIR O JOGO</li>
+                <li><strong>4º</strong> ABRA O JOGO</li>
+                <li><strong>5º</strong> O LOADER IRÁ APARECER NO LOBBY</li>
+                <li><strong>6º</strong> SE O JOGO REINICIAR, REFAÇA O PROCESSO NOVAMENTE</li>
             </ol>
-            <button class="download-button" onclick="window.open('https://www.battle.net', '_blank');">
-                📥 Ir para Battle.net
-            </button>
-            <div class="success">
-                <strong>✅ Download iniciado:</strong> Aguarde o Battle.net baixar e instalar o jogo.
+            <p><strong>TECLAS PADRÃO PARA ABRIR E FECHAR O LOADER:</strong> <strong>HOME</strong> ou <strong>INSERT</strong></p>
+            <div class="warning">
+                <strong>OBSERVAÇÃO IMPORTANTE:</strong> VOCÊ NÃO PODE INJETAR O MENU COM O JOGO ABERTO
             </div>
         </section>
 
         <section>
-            <h2>⚙️ Passo 2: Instalação</h2>
-            <div class="step">
-                <span class="step-number">2</span>
-                <span class="step-title">Instalar via Battle.net</span>
-            </div>
-            <ol>
-                <li>Aguarde o download do Launcher Battle.net completar</li>
-                <li>Execute o instalador do Battle.net</li>
-                <li>Siga as instruções na tela</li>
-                <li>Escolha a pasta de instalação (SSD recomendado)</li>
-                <li>Aguarde a instalação completar (pode levar 30-45 minutos)</li>
-                <li>Quando pronto, clique em <strong>Iniciar</strong></li>
-            </ol>
-            <div class="success">
-                <strong>✅ Instalado!</strong> O Warzone está pronto para jogar.
-            </div>
-        </section>
-
-        <section>
-            <h2>🎮 Passo 3: Configuração Inicial</h2>
-            <div class="step">
-                <span class="step-number">3</span>
-                <span class="step-title">Configurar Gráficos</span>
-            </div>
-            <h3>Gráficos Recomendados (para bom desempenho):</h3>
+            <h2>🐛 Troubleshooting (Solução de Problemas)</h2>
             <ul>
-                <li><strong>Resolução:</strong> 1920x1080 (Full HD)</li>
-                <li><strong>Modo de Vídeo:</strong> Tela cheia</li>
-                <li><strong>FPS:</strong> 144+ recomendado (ou máximo da sua tela)</li>
-                <li><strong>Qualidade Gráfica:</strong> Alta/Média (dependendo do PC)</li>
-                <li><strong>Ray Tracing:</strong> Desativado (consome muita VRAM)</li>
-                <li><strong>DLSS:</strong> Ativado se tiver GPU NVIDIA</li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>🎮 Passo 4: Controles e Sensibilidade</h2>
-            <div class="step">
-                <span class="step-number">4</span>
-                <span class="step-title">Configurar Controles</span>
-            </div>
-            <h3>Configurações Recomendadas (Mouse/Teclado):</h3>
-            <ul>
-                <li><strong>Sensibilidade do Mouse:</strong> 5-8 (ajuste conforme conforto)</li>
-                <li><strong>ADS Sensibilidade:</strong> 1.0x</li>
-                <li><strong>Movimento para Frente:</strong> W</li>
-                <li><strong>Movimento para Trás:</strong> S</li>
-                <li><strong>Movimento Esquerda:</strong> A</li>
-                <li><strong>Movimento Direita:</strong> D</li>
-                <li><strong>Pular:</strong> Barra de Espaço</li>
-                <li><strong>Mira:</strong> Botão direito do mouse</li>
-                <li><strong>Atirar:</strong> Clique esquerdo</li>
-                <li><strong>Recarga:</strong> R</li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>🐛 Troubleshooting: Problemas Comuns</h2>
-
-            <h3>❌ Problema: "Jogo não inicia ou trava na tela de carregamento"</h3>
-            <p><strong>Solução:</strong></p>
-            <ul>
-                <li>Reinicie o PC completamente</li>
-                <li>Desinstale e reinstale o jogo</li>
-                <li>Verifique se a GPU está atualizada</li>
-                <li>Tente rodar em modo compatibilidade (Windows 10)</li>
-            </ul>
-
-            <h3>❌ Problema: "FPS baixo ou travamentos"</h3>
-            <p><strong>Solução:</strong></p>
-            <ul>
-                <li>Diminua a resolução para 1600x900</li>
-                <li>Desative Ray Tracing e sombras de alta qualidade</li>
-                <li>Feche programas de fundo (Chrome, Discord, etc.)</li>
-                <li>Atualize os drivers da placa de vídeo</li>
-            </ul>
-
-            <h3>❌ Problema: "Erro de conexão ou lag"</h3>
-            <p><strong>Solução:</strong></p>
-            <ul>
-                <li>Reinicie o roteador de internet</li>
-                <li>Desconecte outros dispositivos da WiFi</li>
-                <li>Use conexão com fio (Ethernet) se possível</li>
-                <li>Verifique a velocidade da internet (mínimo 10 Mbps)</li>
-            </ul>
-
-            <h3>❌ Problema: "Erro de atualização ou arquivo corrompido"</h3>
-            <p><strong>Solução:</strong></p>
-            <ul>
-                <li>Abra o Battle.net</li>
-                <li>Clique em <strong>Options → Scan and Repair</strong></li>
-                <li>Aguarde o processo completar</li>
-                <li>Tente iniciar novamente</li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>✅ Dicas Extras para Melhorar seu Desempenho</h2>
-            <ul>
-                <li>🔊 Ative o áudio 3D para melhor localização de inimigos</li>
-                <li>🎯 Use crosshair padrão (mais fácil de mirar)</li>
-                <li>⚙️ Desative motionblur para melhor reatividade</li>
-                <li>📊 Monitore a temperatura do PC (use MSI Afterburner)</li>
-                <li>🌐 Jogue em servidores próximos geograficamente</li>
+                <li>Loader não abre ou some → Rode como administrador e confirme antivírus off.</li>
+                <li>Erro de DLL → Instale Visual C++ (passo 3) e reinicie PC.</li>
+                <li>Não aparece no lobby → Feche tudo, abra loader primeiro, insira key, espere prompt e só depois abra o jogo.</li>
+                <li>Jogo crasha → Reinicie PC, verifique Defender off, rode loader como admin.</li>
+                <li>Erro persistente → Abra ticket com print do erro, versão do Windows e o que já tentou.</li>
             </ul>
         </section>
 
@@ -276,7 +185,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2026 Centro de Recursos Pro. Todos os direitos reservados. Desenvolvido com ❤️ para você | Última atualização: Fevereiro 2026</p>
+        <p>© 2026 Centro de Recursos Pro. Todos os direitos reservados. | Qualquer dúvida, abre ticket!</p>
     </footer>
 </body>
 </html>

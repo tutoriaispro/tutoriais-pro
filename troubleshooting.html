@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Troubleshooting - Centro de Recursos Pro</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0015 0%, #1a0033 50%, #000814 100%);
+            color: #e0e0ff;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(10, 0, 30, 0.7);
+            border-bottom: 3px solid #9d00ff;
+            margin-bottom: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 25px rgba(157, 0, 255, 0.4);
+        }
+        header h1 { font-size: 2.5em; color: #c300ff; text-shadow: 0 0 20px #c300ff; margin-bottom: 10px; }
+        .breadcrumb { color: #b0b0ff; font-size: 0.9em; margin-top: 10px; }
+        .breadcrumb a { color: #00d4ff; text-decoration: none; cursor: pointer; }
+        .breadcrumb a:hover { text-decoration: underline; }
+
+        .container { max-width: 980px; margin: 0 auto; }
+
+        .back-button {
+            display: inline-block;
+            background: linear-gradient(90deg, #9d00ff 0%, #00d4ff 100%);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.95em;
+        }
+        .back-button:hover { transform: scale(1.05); box-shadow: 0 0 15px rgba(0, 212, 255, 0.6); }
+
+        /* Índice de categorias */
+        .toc {
+            background: rgba(20, 0, 50, 0.5);
+            border: 2px solid #9d00ff;
+            border-radius: 10px;
+            padding: 25px 30px;
+            margin-bottom: 35px;
+            box-shadow: 0 0 15px rgba(157, 0, 255, 0.2);
+        }
+        .toc h2 { color: #00d4ff; font-size: 1.3em; margin-bottom: 15px; text-shadow: 0 0 8px #00d4ff; }
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 10px;
+        }
+        .toc-item {
+            background: rgba(157, 0, 255, 0.1);
+            border: 1px solid rgba(157, 0, 255, 0.4);
+            border-radius: 7px;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #b0b0ff;
+            font-size: 0.9em;
+        }
+        .toc-item:hover {
+            background: rgba(0, 212, 255, 0.15);
+            border-color: #00d4ff;
+            color: #00d4ff;
+            transform: translateX(4px);
+        }
+
+        /* Seções */
+        section {
+            background: rgba(20, 0, 50, 0.4);
+            border: 2px solid #9d00ff;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 15px rgba(157, 0, 255, 0.2);
+            scroll-margin-top: 80px;
+        }
+
+        h2 {
+            color: #00d4ff;
+            font-size: 1.7em;
+            margin-bottom: 18px;
+            border-bottom: 2px solid #9d00ff;
+            padding-bottom: 10px;
+            text-shadow: 0 0 8px #00d4ff;
+        }
+        h3 {
+            color: #c300ff;
+            font-size: 1.2em;
+            margin-top: 22px;
+            margin-bottom: 12px;
+            text-shadow: 0 0 6px #c300ff;
+        }
+        h4 {
+            color: #00d4ff;
+            font-size: 1em;
+            margin-top: 18px;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        p { color: #b0b0ff; line-height: 1.7; margin-bottom: 14px; }
+
+        ul, ol { margin-left: 25px; margin-bottom: 14px; color: #b0b0ff; line-height: 1.8; }
+        li { margin-bottom: 8px; }
+        li strong { color: #e0e0ff; }
+
+        .warning {
+            background: rgba(255, 80, 80, 0.1);
+            border-left: 4px solid #ff5555;
+            padding: 15px 18px;
+            margin: 18px 0;
+            border-radius: 5px;
+        }
+        .warning strong { color: #ff6666; }
+
+        .success {
+            background: rgba(0, 212, 255, 0.08);
+            border-left: 4px solid #00d4ff;
+            padding: 15px 18px;
+            margin: 18px 0;
+            border-radius: 5px;
+        }
+        .success strong { color: #00d4ff; }
+
+        .info {
+            background: rgba(157, 0, 255, 0.1);
+            border-left: 4px solid #9d00ff;
+            padding: 15px 18px;
+            margin: 18px 0;
+            border-radius: 5px;
+        }
+        .info strong { color: #c300ff; }
+
+        code {
+            background: rgba(0, 212, 255, 0.12);
+            color: #00d4ff;
+            padding: 2px 7px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.92em;
+        }
+
+        .tag {
+            display: inline-block;
+            background: rgba(157, 0, 255, 0.25);
+            border: 1px solid #9d00ff;
+            color: #c300ff;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 0.82em;
+            font-weight: bold;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* Error badge */
+        .error-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 50, 50, 0.15);
+            border: 1px solid rgba(255, 80, 80, 0.5);
+            color: #ff7070;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-bottom: 14px;
+        }
+
+        /* Tabs Intel / AMD */
+        .cpu-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid rgba(157, 0, 255, 0.3);
+            padding-bottom: 0;
+        }
+        .cpu-tab {
+            padding: 10px 22px;
+            border-radius: 8px 8px 0 0;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.95em;
+            border: 2px solid transparent;
+            border-bottom: none;
+            transition: all 0.25s ease;
+            position: relative;
+            top: 2px;
+        }
+        .cpu-tab.intel {
+            background: rgba(0, 130, 210, 0.1);
+            color: #6bb8ff;
+            border-color: rgba(0, 130, 210, 0.3);
+        }
+        .cpu-tab.intel.active {
+            background: rgba(0, 130, 210, 0.25);
+            color: #4db8ff;
+            border-color: #0082d2;
+            border-bottom-color: #0a0015;
+        }
+        .cpu-tab.amd {
+            background: rgba(237, 28, 36, 0.1);
+            color: #ff8080;
+            border-color: rgba(237, 28, 36, 0.3);
+        }
+        .cpu-tab.amd.active {
+            background: rgba(237, 28, 36, 0.22);
+            color: #ff5555;
+            border-color: #ed1c24;
+            border-bottom-color: #0a0015;
+        }
+        .cpu-content { display: none; animation: fadeIn 0.25s ease; }
+        .cpu-content.active { display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Steps */
+        .step-box {
+            background: rgba(157, 0, 255, 0.07);
+            border-left: 4px solid #9d00ff;
+            padding: 18px 20px;
+            margin: 14px 0;
+            border-radius: 5px;
+        }
+        .step-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, #9d00ff, #00d4ff);
+            color: #fff;
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 0.85em;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+        .step-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            color: #00d4ff;
+            font-weight: bold;
+            font-size: 1em;
+        }
+
+        /* Divider */
+        .divider {
+            border: none;
+            border-top: 1px solid rgba(157, 0, 255, 0.3);
+            margin: 25px 0;
+        }
+
+        /* App list */
+        .app-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 8px;
+            margin: 14px 0;
+        }
+        .app-item {
+            background: rgba(255, 50, 50, 0.08);
+            border: 1px solid rgba(255, 80, 80, 0.3);
+            border-radius: 6px;
+            padding: 8px 12px;
+            color: #ff9090;
+            font-size: 0.88em;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .app-item::before { content: "✕"; color: #ff5555; font-weight: bold; }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #8080aa;
+            margin-top: 40px;
+            border-top: 1px solid #300066;
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.8em; }
+            section { padding: 20px; }
+            h2 { font-size: 1.4em; }
+            .cpu-tabs { flex-direction: column; border-bottom: none; }
+            .cpu-tab { border-radius: 8px; border-bottom: 2px solid transparent; top: 0; }
+            .cpu-tab.active { border-bottom-color: transparent !important; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>⚙️ Troubleshooting</h1>
+        <div class="breadcrumb">
+            <a onclick="window.location.href='index.html'">← Voltar para Home</a> | Atualizado em Fevereiro 2026
+        </div>
+    </header>
+
+    <div class="container">
+        <button class="back-button" onclick="window.location.href='index.html'">← Voltar para Home</button>
+
+        <!-- Índice -->
+        <div class="toc">
+            <h2>📋 Navegação Rápida</h2>
+            <div class="toc-grid">
+                <div class="toc-item" onclick="scrollTo('van9005')">🔴 Erro VAN 9005 / 9003 / 9002</div>
+                <div class="toc-item" onclick="scrollTo('tpm')">🔵 Como Ativar TPM 2.0 (Intel & AMD)</div>
+                <div class="toc-item" onclick="scrollTo('secureboot')">🟡 Fix Secure Boot Enabled</div>
+                <div class="toc-item" onclick="scrollTo('hvci')">🟠 Fix HVCI Enabled</div>
+                <div class="toc-item" onclick="scrollTo('conexao')">🟢 Conexão Falhada Chrome/Edge</div>
+                <div class="toc-item" onclick="scrollTo('skincrash')">⚪ SkinChanger Crashando</div>
+                <div class="toc-item" onclick="scrollTo('appsproibidos')">❌ Apps Incompatíveis</div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════ -->
+        <!-- VAN 9005 / 9003 / 9002                      -->
+        <!-- ═══════════════════════════════════════════ -->
+        <section id="van9005">
+            <h2>🔴 Erro VAN 9005 / VAN 9003 / VAN 9002</h2>
+
+            <div class="error-badge">🎮 VALORANT · Anti-Cheat Vanguard</div>
+
+            <p>
+                O erro <strong>VAN9005</strong> é causado quando os requisitos de segurança exigidos pela Riot Games não estão ativados corretamente — principalmente o <strong>TPM 2.0</strong> e o <strong>Secure Boot</strong>.
+            </p>
+
+            <div class="toc" style="margin-bottom:0; padding: 15px 20px;">
+                <p style="margin:0; color: #c300ff; font-weight: bold;">Causas mais comuns:</p>
+                <div style="display:flex; gap: 10px; margin-top: 10px; flex-wrap: wrap;">
+                    <span class="tag">TPM 2.0 DESABILITADO</span>
+                    <span class="tag">SECURE BOOT DESABILITADO</span>
+                </div>
+            </div>
+
+            <p style="margin-top: 18px;">Para a maioria dos casos, habilitar essas configurações resolve o problema. O processo é feito pela BIOS do seu computador:</p>
+
+            <ul>
+                <li>Pressione o botão do Windows e escreva <strong>"Informações"</strong>, abra <strong>"Informações do Sistema"</strong></li>
+                <li>Localize a opção <strong>"Produto BaseBoard"</strong> — ela mostrará o nome da sua placa-mãe</li>
+                <li>Com o nome da placa-mãe em mãos, pesquise no YouTube ou ChatGPT:
+                    <ul>
+                        <li>"Como resolver VAN9005 Valorant <em>(nome da placa-mãe)</em>"</li>
+                        <li>"Como ligar Secure Boot e TPM 2.0 na BIOS <em>(nome da placa-mãe)</em>"</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="info">
+                <strong>💡 Dica:</strong> Pesquisar no YouTube geralmente é mais eficaz, pois existem vídeos com passo a passo gravado para cada placa-mãe específica. Veja o tutorial de TPM 2.0 detalhado abaixo para Intel e AMD.
+            </div>
+
+            <p>
+                <strong>Referência de vídeo:</strong> <a href="https://youtu.be/HLlMrCA-yvo?si=2CQddz2SjVRUcjhz" target="_blank" style="color:#00d4ff;">TPM 2.0 & Secure Boot — Erro VAN 9005/9003/9002 (YouTube)</a>
+            </p>
+        </section>
+
+        <!-- ═══════════════════════════════════════════ -->
+        <!-- TPM 2.0 — INTEL E AMD                       -->
+        <!-- ═══════════════════════════════════════════ -->
+        <section id="tpm">
+            <h2>🔵 Como Ativar TPM 2.0 — Intel & AMD</h2>
+
+            <p>O TPM 2.0 é um chip de segurança obrigatório para Valorant e alguns outros jogos. Siga o guia específico para o seu processador:</p>
+
+            <!-- Tabs -->
+            <div class="cpu-tabs">
+                <div class="cpu-tab intel active" onclick="switchTab('intel')">🔵 Intel</div>
+                <div class="cpu-tab amd" onclick="switchTab('amd')">🔴 AMD</div>
+            </div>
+
+            <!-- INTEL -->
+            <div class="cpu-content active" id="tab-intel">
+                <h3>🔵 Ativando TPM 2.0 — Processadores Intel</h3>
+                <p>Em placas Intel, o TPM é chamado de <strong>Intel PTT (Platform Trust Technology)</strong>.</p>
+
+                <div class="step-box">
+                    <div class="step-header"><span class="step-num">1</span> Acesse a BIOS/UEFI</div>
+                    <ul>
+                        <li>Desligue completamente o computador</li>
+                        <li>Ligue e pressione repetidamente a tecla <strong>Delete</strong> ou <strong>F2</strong> durante a inicialização</li>
+                        <li>Algumas placas ASUS: <code>F2</code> | Gigabyte: <code>Delete</code> | MSI: <code>Delete</code> | ASRock: <code>F2</code></li>
+                    </ul>
+                </div>
+
+                <div class="step-box">
+                    <div class="step-header"><span class="step-num">2</span> Acesse o Modo Avançado</div>
+                    <ul>
+                        <li>Na BIOS, pressione <strong>F7</strong> ou procure o botão <strong>"Advanced Mode"</strong></li>
+                        <li>Isso exibe todas as opções detalhadas da placa</li>
+                    </ul>
+                </div>
+
+                <div class="step-box">
+                    <div class="step-header"><span class="step-num">3</span> Encontre o Intel PTT</div>
+                    <ul>
+                        <li>Navegue até a aba <strong>Advanced</strong> → <strong>Trusted Computing</strong></li>
+                        <li><em>Em algumas placas:</em> <strong>Security</strong> → <strong>TPM Configuration</strong></li>
+                        <li><em>Em outras:</em> <strong>Settings</strong> → <strong>Security</strong> → <strong>Trusted Computing</strong></li>
+                        <li>Encontre a opção <strong>Security Device Support</strong> e mude para <strong>Enable</strong></li>
+                        <li>Encontre <strong>TPM Device Selection</strong> ou <strong>TPM Support</strong> e selecione <strong>Intel PTT</strong></li>
+                    </ul>
+                </div>
+
+                <div class="step-box">
+                    <div class="step-header"><span class="step-num">4</span> Salve e Reinicie</div>
+                    <ul>
+                        <li>Pressione <strong>F10</strong> para salvar</li>
+                        <li>Confirme clicando <strong>"OK"</strong> ou <strong>"Yes"</strong></li>
+                        <li>O computador reiniciará automaticamente</li>
+                    </ul>
+                </div>
+
+                <div class="step-box">
+                    <div class="step-header"><span class="step-num">5</span> Verifique no Windows</div>
+                    <ul>
+                        <li>Pressione <code>Win + R</code>, digite <code>tpm.msc</code> e pressione Enter</li>
+                        <li>Deverá aparecer: <strong>"O TPM está pronto para uso"</strong> e <strong>Versão da especificação: 2.0</strong></li>
+                    </ul>
+                </div>
+
+                <div class="success">
+                    <strong>✅ Intel PTT ativado!</strong> Agora o Valorant deve conseguir iniciar normalmente.
+                </div>
+
+                <div class="warning">
+                    <strong>⚠️ Não encontra Intel PTT?</strong> Atualize o firmware (BIOS) da sua placa-mãe para a versão mais recente. Placas muito antigas podem não suportar TPM 2.0.
+                </div>
+            </div>
+
+            <!-- AMD -->
+            <div class="cpu-content" id="tab-amd">
+                <h3>🔴 Ativando TPM 2.0 — Processadores AMD</h3>
+                <p>Em placas AMD, o TPM é chamado de <strong>AMD fTPM (Firmware TPM)</strong> ou <strong>AMD PSP fTPM</strong>.</p>
+
+                <div class="step-box">
+                    <div class="step-header"><span class="step-num">1</span> Acesse a BIOS/UEFI</div>
+                    <ul>
+                        <li>Desligue completamente o computador</li>
+                        <li>Ligue e pressione repetidamente <strong>Delete</strong> ou <strong>F2</strong></li>
+                        <li>Placas AMD mais comuns: ASUS: <code>F2/Delete</code> | Gigabyte: <code>Delete</code> | MSI: <code>Delete</code></li>
+                    </ul>
+                </div>
+
+                <div class="step-box">
+                    <div class="step-header"><span class="step-num">2</span> Entre no Modo Avançado</div>
+                    <ul>
+                        <li>Pressione <strong>F7</strong> ou clique em <strong>"Advanced Mode"</strong></li>
+                        <li>Procure a aba <strong>Advanced</strong> ou <strong>Settings</strong></li>
+                    </ul>
+                </div>
+
+                <div class="step-box">
+                    <div class="step-header"><span class="step-num">3</span> Encontre o AMD fTPM</div>
+                    <ul>
+                        <li>Navegue até <strong>Advanced</strong> → <strong>AMD fTPM configuration</strong></li>
+                        <li><em>Em algumas placas:</em> <strong>Advanced</strong> → <strong>Trusted Computing</strong></li>
+                        <li><em>Em outras:</em> <strong>Settings</strong> → <strong>Security</strong> → <strong>AMD PSP fTPM</strong></li>
+                        <li>Encontre a opção <strong>TPM Device Selection</strong> ou <strong>AMD CPU fTPM</strong></li>
+                        <li>Mude de <strong>Discrete TPM</strong> ou <strong>Disabled</strong> para <strong>Firmware TPM</strong> ou <strong>AMD CPU fTPM</strong></li>
+                    </ul>
+                </div>
+
+                <div class="step-box">
+                    <div class="step-header"><span class="step-num">4</span> Salve e Reinicie</div>
+                    <ul>
+                        <li>Pressione <strong>F10</strong> para salvar</li>
+                        <li>Confirme com <strong>"OK"</strong> ou <strong>"Yes"</strong></li>
+                        <li>O sistema reiniciará</li>
+                    </ul>
+                </div>
+
+                <div class="step-box">
+                    <div class="step-header"><span class="step-num">5</span> Verifique no Windows</div>
+                    <ul>
+                        <li>Pressione <code>Win + R</code>, digite <code>tpm.msc</code> e pressione Enter</li>
+                        <li>Deve aparecer: <strong>"O TPM está pronto para uso"</strong> — Versão: <strong>2.0</strong></li>
+                    </ul>
+                </div>
+
+                <div class="success">
+                    <strong>✅ AMD fTPM ativado!</strong> Agora o Valorant deve conseguir iniciar sem o erro VAN9005.
+                </div>
+
+                <div class="warning">
+                    <strong>⚠️ Travamentos com AMD fTPM?</strong> Alguns processadores Ryzen 1000/2000/3000 podem ter instabilidade com fTPM. Se ocorrer travamentos no Windows após habilitar, atualize o AGESA da BIOS ou pesquise "AMD fTPM stutter fix <em>(modelo do seu Ryzen)</em>".
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════ -->
+        <!-- FIX SECURE BOOT                             -->
+        <!-- ═══════════════════════════════════════════ -->
+        <section id="secureboot">
+            <h2>🟡 Fix Secure Boot Enabled</h2>
+
+            <div class="error-badge">🎮 VALORANT · Erro VAN9003</div>
+
+            <p>O Secure Boot é um recurso de segurança da UEFI que precisa estar ativo para o Vanguard (anti-cheat do Valorant) funcionar corretamente. Siga os passos abaixo:</p>
+
+            <h3>👑 Passo a Passo para Configurar o Secure Boot</h3>
+
+            <div class="step-box">
+                <div class="step-header"><span class="step-num">1</span> Acesse a BIOS/UEFI</div>
+                <ul>
+                    <li>Desligue seu computador completamente</li>
+                    <li>Ligue novamente e pressione repetidamente a tecla <strong>Delete (Del)</strong> enquanto o computador inicia</li>
+                    <li><strong>Alternativas:</strong> Algumas placas-mãe utilizam outras teclas como <code>F2</code>, <code>F10</code>, ou <code>Esc</code> — consulte o manual da sua placa-mãe</li>
+                </ul>
+            </div>
+
+            <div class="step-box">
+                <div class="step-header"><span class="step-num">2</span> Localize o Secure Boot</div>
+                <ul>
+                    <li>Navegue até a aba <strong>Boot</strong>, <strong>Tools</strong>, ou <strong>Power</strong>, dependendo da sua placa-mãe</li>
+                    <li><strong>Se Secure Boot não estiver visível:</strong>
+                        <ul>
+                            <li>Vá até a aba <strong>Boot</strong></li>
+                            <li>Desative a opção <strong>CSM (Compatibility Support Module)</strong></li>
+                            <li>Salve as configurações e reinicie para retornar à BIOS</li>
+                            <li>Agora o Secure Boot estará disponível</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="step-box">
+                <div class="step-header"><span class="step-num">3</span> Configurar o Secure Boot</div>
+                <ul>
+                    <li>Encontre a opção <strong>Secure Boot</strong> e ative (<strong>Enabled</strong>)</li>
+                    <li>Realize os seguintes ajustes:
+                        <ul>
+                            <li><strong>Reset Keys:</strong> Resete as chaves do Secure Boot</li>
+                            <li><strong>Restore Factory Keys:</strong> Retorne para as chaves de fábrica</li>
+                            <li>Se a opção estiver configurada como <strong>Standard</strong>, altere para <strong>Custom</strong> — isso permitirá o uso de botões para gerenciar as chaves</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="step-box">
+                <div class="step-header"><span class="step-num">4</span> Salve e Reinicie</div>
+                <p>Após configurar o Secure Boot, salve as alterações (geralmente pressionando <strong>F10</strong>) e reinicie o computador.</p>
+            </div>
+
+            <div class="success">
+                <strong>✅ Resolvido!</strong> Após ativar o Secure Boot com as chaves corretas, o Valorant deverá iniciar sem o erro VAN9003.
+            </div>
+
+            <div class="warning">
+                <strong>⚠️ Atenção:</strong> Se o Windows não iniciar após ativar o Secure Boot, entre novamente na BIOS e faça o "Restore Factory Keys" antes de ativar. Sistemas com dual boot podem exigir configurações adicionais.
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════ -->
+        <!-- FIX HVCI                                    -->
+        <!-- ═══════════════════════════════════════════ -->
+        <section id="hvci">
+            <h2>🟠 Fix HVCI Enabled</h2>
+
+            <div class="error-badge">🎮 VALORANT · Erro VAN:RESTRICTION</div>
+
+            <p>O erro <strong>"Your account does not meet the following requirements: HVCI enabled"</strong> significa que a <strong>Integridade de Memória (HVCI)</strong> precisa estar ativada no Windows.</p>
+
+            <h3>Como Ativar a Integridade de Memória</h3>
+
+            <div class="step-box">
+                <div class="step-header"><span class="step-num">1</span> Abra o Isolamento de Núcleo</div>
+                <ul>
+                    <li>Aperte o botão <strong>Windows</strong> do seu computador</li>
+                    <li>Escreva <strong>"isolamento de núcleo"</strong> na barra de pesquisa</li>
+                    <li>Abra o resultado que aparecer</li>
+                </ul>
+            </div>
+
+            <div class="step-box">
+                <div class="step-header"><span class="step-num">2</span> Ative a Integridade de Memória</div>
+                <ul>
+                    <li>Encontre a opção <strong>"Integridade de memória"</strong></li>
+                    <li>Ative o toggle (mude para <strong>Ligado</strong>)</li>
+                </ul>
+            </div>
+
+            <div class="step-box">
+                <div class="step-header"><span class="step-num">3</span> Reinicie o Computador</div>
+                <ul>
+                    <li>Reinicie o computador para aplicar as alterações</li>
+                    <li>Após reiniciar, abra o Valorant normalmente</li>
+                </ul>
+            </div>
+
+            <div class="success">
+                <strong>✅ Resolvido!</strong> Após habilitar a Integridade de Memória e reiniciar, você poderá abrir o VALORANT novamente.
+            </div>
+
+            <div class="warning">
+                <strong>⚠️ HVCI Incompatível com drivers?</strong> Se a opção estiver cinza ou não puder ser ativada, pode haver um driver incompatível no sistema. Verifique o <strong>Gerenciador de Dispositivos</strong> por drivers com erros ou atualize todos os drivers antes de tentar novamente.
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════ -->
+        <!-- CONEXÃO FALHADA                             -->
+        <!-- ═══════════════════════════════════════════ -->
+        <section id="conexao">
+            <h2>🟢 Conexão Falhada? Chrome ou Edge</h2>
+
+            <p>Se você está tentando acessar o <strong>valorantskinchanger.com.br/app</strong> e a conexão está falhando no Chrome ou Edge, siga os passos abaixo:</p>
+
+            <h3>Como Resolver</h3>
+
+            <div class="step-box">
+                <div class="step-header"><span class="step-num">1</span> Acesse as Configurações do Site</div>
+                <ul>
+                    <li>Com o site aberto no navegador, clique no <strong>ícone de cadeado</strong> (ou na engrenagem) ao lado da URL</li>
+                    <li>Um menu de permissões do site irá abrir</li>
+                </ul>
+            </div>
+
+            <div class="step-box">
+                <div class="step-header"><span class="step-num">2</span> Ative o Acesso à Rede Local</div>
+                <ul>
+                    <li>Localize a opção <strong>"Acesso à rede local"</strong> no menu</li>
+                    <li>Verifique se essa opção está <strong>ativada</strong></li>
+                    <li>Caso esteja desativada, <strong>habilite-a</strong></li>
+                </ul>
+            </div>
+
+            <div class="step-box">
+                <div class="step-header"><span class="step-num">3</span> Recarregue a Página</div>
+                <ul>
+                    <li>Após ativar, recarregue a página com <code>F5</code> ou <code>Ctrl+R</code></li>
+                </ul>
+            </div>
+
+            <div class="success">
+                <strong>✅ Pronto!</strong> Após ativar o acesso à rede local, o problema de conexão deverá ser resolvido.
+            </div>
+
+            <div class="info">
+                <strong>💡 Nota:</strong> Essa opção controla se o site pode se comunicar com servidores locais da sua máquina (como o backend do SkinChanger que roda localmente). Sem ela ativada, o site não consegue se conectar ao processo rodando no seu PC.
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════ -->
+        <!-- SKINCHANGER CRASH                           -->
+        <!-- ═══════════════════════════════════════════ -->
+        <section id="skincrash">
+            <h2>⚪ SkinChanger Crashando Após Injetar</h2>
+
+            <p>Se o SkinChanger está crashando após a injeção no game, o problema geralmente é o <strong>Windows Defender bloqueando o processo</strong>. Resolva adicionando uma exclusão:</p>
+
+            <div class="step-box">
+                <div class="step-header"><span class="step-num">1</span> Abra a Proteção contra Vírus</div>
+                <ul>
+                    <li>Pressione o botão <strong>Windows</strong> e pesquise: <strong>"Proteção contra vírus e ameaças"</strong></li>
+                    <li>Abra o resultado</li>
+                </ul>
+            </div>
+
+            <div class="step-box">
+                <div class="step-header"><span class="step-num">2</span> Acesse as Configurações de Proteção</div>
+                <ul>
+                    <li>Desça a página e encontre a opção <strong>"Configurações de proteção contra vírus e ameaças"</strong></li>
+                    <li>Clique em <strong>"Gerenciar configurações"</strong></li>
+                </ul>
+            </div>
+
+            <div class="step-box">
+                <div class="step-header"><span class="step-num">3</span> Adicione as Exclusões</div>
+                <ul>
+                    <li>Desça até a opção <strong>"Adicionar ou remover exclusões"</strong> e clique nela</li>
+                    <li>Remova o <strong>SkinChanger</strong> e o <strong>WebDoc</strong> das exclusões (se já estiverem lá) e readicione-os</li>
+                    <li>Adicione tanto a <strong>pasta</strong> do SkinChanger quanto o <strong>executável</strong> como exclusões separadas</li>
+                </ul>
+            </div>
+
+            <div class="step-box">
+                <div class="step-header"><span class="step-num">4</span> Reinicie e Tente Novamente</div>
+                <ul>
+                    <li>Feche o jogo completamente</li>
+                    <li>Reabra o SkinChanger e tente injetar novamente</li>
+                </ul>
+            </div>
+
+            <div class="success">
+                <strong>✅ Resolvido!</strong> Com as exclusões configuradas corretamente, o SkinChanger funcionará sem crashar.
+            </div>
+
+            <div class="info">
+                <strong>💡 Ainda está crashando?</strong> Se mesmo após adicionar as exclusões o game continuar crashando, abra um ticket de suporte no canal <strong>#desconhecido</strong> que a equipe ajudará a resolver da melhor forma.
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════ -->
+        <!-- APPS INCOMPATÍVEIS                          -->
+        <!-- ═══════════════════════════════════════════ -->
+        <section id="appsproibidos">
+            <h2>❌ Aplicativos Incompatíveis / Proibidos</h2>
+
+            <p>Certifique-se de que os seguintes aplicativos estejam <strong>completamente desinstalados</strong> antes de usar o SkinChanger ou jogar Valorant. Eles podem causar conflitos, crashs ou banimento:</p>
+
+            <div class="app-list">
+                <div class="app-item">GlassWire</div>
+                <div class="app-item">Everything</div>
+                <div class="app-item">NetLimiter</div>
+                <div class="app-item">HTTPDebugger</div>
+                <div class="app-item">Wireshark</div>
+                <div class="app-item">Npcap</div>
+                <div class="app-item">Fiddler</div>
+                <div class="app-item">FiddlerEverywhere</div>
+                <div class="app-item">BinaryNinja</div>
+                <div class="app-item">ProcessHacker</div>
+                <div class="app-item">OverWolf</div>
+                <div class="app-item">CheatEngine</div>
+                <div class="app-item">ProcessLasso</div>
+                <div class="app-item">Lunar Client</div>
+                <div class="app-item">Bad Lion Client</div>
+            </div>
+
+            <div class="warning">
+                <strong>⚠️ Importante:</strong> Não basta fechar esses programas — eles devem estar <strong>desinstalados completamente</strong>. Alguns deles deixam drivers rodando em segundo plano mesmo quando fechados.
+            </div>
+
+            <h3>Como Desinstalar Completamente</h3>
+            <ul>
+                <li>Acesse <strong>Painel de Controle</strong> → <strong>Programas</strong> → <strong>Programas e Recursos</strong></li>
+                <li>Localize o programa na lista e clique em <strong>Desinstalar</strong></li>
+                <li>Após desinstalar, reinicie o computador para garantir que nenhum driver residual permaneça ativo</li>
+                <li>Para verificar drivers persistentes, use o <strong>Gerenciador de Dispositivos</strong> ou o <strong>Autoruns</strong> (da Microsoft Sysinternals)</li>
+            </ul>
+
+            <div class="info">
+                <strong>💡 Dica extra:</strong> Programas como Npcap e WinPcap podem permanecer como drivers mesmo após desinstalar o software principal. Pesquise especificamente por "como remover Npcap completamente" se precisar.
+            </div>
+        </section>
+
+        <button class="back-button" onclick="window.location.href='index.html'">← Voltar para Home</button>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Centro de Recursos Pro. Todos os direitos reservados. Desenvolvido com ❤️ para você | Última atualização: Fevereiro 2026</p>
+    </footer>
+
+    <script>
+        function scrollTo(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function switchTab(cpu) {
+            document.querySelectorAll('.cpu-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.cpu-content').forEach(c => c.classList.remove('active'));
+            document.querySelector('.cpu-tab.' + cpu).classList.add('active');
+            document.getElementById('tab-' + cpu).classList.add('active');
+        }
+    </script>
+</body>
+</html>

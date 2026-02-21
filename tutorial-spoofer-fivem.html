@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tutorial Spoofer FiveM - Centro de Recursos Pro</title>
+    <title>Tutorial: Spoofer FiveM - Centro de Recursos Pro</title>
     <style>
+        /* CSS original mantido */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -45,7 +46,6 @@
         .info { background: rgba(157, 0, 255, 0.1); border-left: 4px solid #9d00ff; padding: 15px; margin: 20px 0; border-radius: 5px; }
         .info strong { color: #c300ff; }
         ol, ul { margin-left: 30px; margin-bottom: 15px; color: #b0b0ff; line-height: 1.8; }
-        li { margin-bottom: 10px; }
         .step { background: rgba(157, 0, 255, 0.07); border-left: 4px solid #9d00ff; padding: 20px; margin: 20px 0; border-radius: 5px; }
         .step-number { display: inline-block; background: linear-gradient(135deg, #9d00ff, #00d4ff); color: #fff; width: 35px; height: 35px; border-radius: 50%; text-align: center; line-height: 35px; font-weight: bold; margin-right: 10px; }
         .step-title { color: #00d4ff; font-size: 1.1em; font-weight: bold; display: inline; }
@@ -79,12 +79,6 @@
         }
         .back-button:hover { transform: scale(1.05); box-shadow: 0 0 15px rgba(0, 212, 255, 0.6); }
         footer { text-align: center; padding: 20px; color: #8080aa; margin-top: 40px; border-top: 1px solid #300066; }
-        code { background: rgba(0, 212, 255, 0.1); color: #00d4ff; padding: 2px 6px; border-radius: 3px; }
-        @media (max-width: 768px) {
-            header h1 { font-size: 1.8em; }
-            section { padding: 20px; }
-            h2 { font-size: 1.4em; }
-        }
     </style>
 </head>
 <body>
@@ -104,246 +98,138 @@
 
         <section>
             <h2>📌 Introdução</h2>
-            <p>
-                Bem-vindo ao tutorial completo do <strong>Spoofer FiveM</strong>! Este programa oferece proteção de bans em servidores FiveM através de técnicas de spoofer de Hardware ID.
-            </p>
-            <p>
-                Este guia fornece instruções detalhadas para instalação, configuração e uso seguro do Spoofer FiveM.
-            </p>
+            <p>Bem-vindo ao tutorial completo do <strong>Spoofer FiveM</strong>! Este guia fornece um processo passo a passo para limpar traços do sistema, aplicar spoofing de HWID e acessar servidores FiveM após restrições de hardware ou conta.</p>
+            <p>O procedimento inclui limpeza profunda (registros Rockstar, Xbox, Discord, Steam) + execução do spoofer + bypass FiveGuard (se aplicável). Siga a sequência exata para maximizar a eficácia.</p>
         </section>
 
         <section>
-            <h2>📋 O que você vai aprender</h2>
-            <ul>
-                <li>✅ Entender o propósito do Spoofer FiveM</li>
-                <li>✅ Verificar requisitos do sistema</li>
-                <li>✅ Download seguro e verificado</li>
-                <li>✅ Instalação completa passo-a-passo</li>
-                <li>✅ Configuração das opções</li>
-                <li>✅ Integração com FiveM</li>
-                <li>✅ Resolução de problemas</li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>🛡️ Por que usar Spoofer FiveM?</h2>
-            <p>
-                Em alguns servidores FiveM privados ou RP, administradores podem banir usuários através de HWID. Um Spoofer oferece proteção:
-            </p>
-            <ul>
-                <li>✅ <strong>Proteção de HWID Ban:</strong> Oferece um HWID "falso"/alternativo</li>
-                <li>✅ <strong>Múltiplas Contas:</strong> Permita usar diferentes contas no mesmo PC</li>
-                <li>✅ <strong>Privacidade:</strong> Mascare informações de hardware</li>
-                <li>✅ <strong>Segunda Chance:</strong> Acesse o servidor com nova identidade após ban</li>
-            </ul>
+            <h2>🛡️ Aviso Importante – Fevereiro 2026</h2>
             <div class="warning">
-                <strong>⚠️ Atenção:</strong> Use este programa de forma ética e responsável. Respeite as regras dos servidores.
+                <strong>⚠️ Responsabilidade:</strong> O uso de spoofers e cleaners é de sua inteira responsabilidade. FiveM/Cfx.re e Rockstar Games atualizam anti-cheat constantemente (FiveGuard, global bans). Nenhum método é 100% garantido ou indetectável permanentemente. Use eticamente, respeitando regras de servidores. Bans por cheating ou violação de TOS podem resultar em consequências permanentes.
             </div>
         </section>
 
         <section>
-            <h2>🔧 Requisitos Mínimos</h2>
+            <h2>🔧 Requisitos</h2>
             <ul>
-                <li><strong>Windows 10/11</strong> 64 bits</li>
-                <li><strong>RAM:</strong> Mínimo 4GB (8GB recomendado)</li>
-                <li><strong>Privilégios de administrador</strong></li>
-                <li><strong>FiveM</strong> instalado e funcionando</li>
-                <li><strong>GTA V</strong> legítimo no Steam</li>
-                <li><strong>Espaço em disco:</strong> 500MB livres</li>
+                <li>Windows 10/11 64 bits</li>
+                <li>Privilégios de administrador</li>
+                <li>FiveM e GTA V (legítimo via Steam/Rockstar) instalados</li>
+                <li>Internet estável</li>
+                <li>Spoofer FiveM com chave/loader ativo</li>
             </ul>
-            <div class="success">
-                <strong>✅ Compatível:</strong> Funciona com FiveM e GTA V Steam legítimo.
+            <div class="info">
+                <strong>Recomendação:</strong> Execute todos os passos em sequência. Faça backup de dados importantes antes de limpezas.
             </div>
         </section>
 
         <section>
-            <h2>📥 Passo 1: Preparar o Sistema</h2>
+            <h2>Passo a Passo: Configuração Completa</h2>
+
             <div class="step">
                 <span class="step-number">1</span>
-                <span class="step-title">Desativar Proteções Temporariamente</span>
+                <span class="step-title">Desativar Antivírus e Proteções</span>
             </div>
-            <h3>Desativar Proteções (temporariamente):</h3>
-            <ol>
-                <li>Abra <strong>Configurações</strong> (Windows + I)</li>
-                <li>Vá para <strong>Privacidade e Segurança</strong></li>
-                <li>Clique em <strong>Proteção contra vírus</strong></li>
-                <li>Desative a <strong>Proteção em tempo real</strong></li>
-                <li>Também desative qualquer outro antivírus (se houver)</li>
-            </ol>
+            <p>Desative temporariamente o Windows Defender e qualquer outro antivírus para evitar bloqueios durante a instalação e execução.</p>
+            <ul>
+                <li>Baixe e use <strong>Defender Control</strong> (versão mais recente): <a href="https://www.sordum.org/9480/defender-control-v2-1/" target="_blank">Download Defender Control (Sordum.org)</a></li>
+                <li>Senha para extrair (se RAR): sordum</li>
+                <li>Execute como administrador e desative a proteção em tempo real.</li>
+            </ul>
             <div class="info">
-                <strong>💡 Lembre-se:</strong> Reative tudo após concluir a instalação para manter seu PC seguro.
+                <strong>Observação:</strong> Reative todas as proteções ao final do processo.
             </div>
-        </section>
 
-        <section>
-            <h2>📥 Passo 2: Download</h2>
             <div class="step">
                 <span class="step-number">2</span>
-                <span class="step-title">Baixar o Spoofer FiveM</span>
+                <span class="step-title">Configurar Conta Local</span>
             </div>
-            <p>Clique no botão para fazer download seguro:</p>
-            <button class="download-button" onclick="alert('Link de download será adicionado em breve. Você receberá via WhatsApp/Email.');">
-                📥 Baixar Spoofer FiveM v1.8
-            </button>
-            <div class="success">
-                <strong>✅ Baixado:</strong> Arquivo pronto para instalar!
-            </div>
-        </section>
+            <p>Verifique se o Windows está usando uma conta local (não vinculada à Microsoft). Se estiver em conta Microsoft:</p>
+            <ol>
+                <li>Vá em Configurações → Contas → Suas informações.</li>
+                <li>Opção "Entrar com conta local em vez disso".</li>
+                <li>Siga as instruções para alternar.</li>
+            </ol>
 
-        <section>
-            <h2>📦 Passo 3: Descompactar</h2>
             <div class="step">
                 <span class="step-number">3</span>
-                <span class="step-title">Extrair o ZIP</span>
+                <span class="step-title">Remover E-mails Vinculados</span>
             </div>
-            <ol>
-                <li>Localize o arquivo baixado em <strong>Downloads</strong></li>
-                <li>Clique <strong>direito</strong> → <strong>"Extrair aqui"</strong></li>
-                <li>Aguarde conclusão</li>
-                <li>Uma pasta será criada com o nome do programa</li>
-            </ol>
-        </section>
+            <p>Acesse Configurações → Contas → E-mail e contas → Remova qualquer e-mail Microsoft ou associado.</p>
 
-        <section>
-            <h2>⚙️ Passo 4: Instalação</h2>
             <div class="step">
                 <span class="step-number">4</span>
-                <span class="step-title">Executar o Instalador</span>
+                <span class="step-title">Desinstalar Aplicativos Xbox</span>
             </div>
-            <ol>
-                <li>Abra a pasta descompactada</li>
-                <li>Procure por <strong>Setup.exe</strong> ou <strong>Install.exe</strong></li>
-                <li>Clique <strong>direito</strong> → <strong>"Executar como administrador"</strong></li>
-                <li>Clique <strong>"Sim"</strong> na pergunta de controle</li>
-                <li>Siga as instruções na tela (próximo, próximo, instalar)</li>
-                <li>Aguarde 2-3 minutos para conclusão</li>
-            </ol>
-            <div class="success">
-                <strong>✅ Instalado!</strong> Programa pronto para configurar.
-            </div>
-        </section>
+            <p>Execute o cleaner para remover vestígios do Xbox Game Bar/Apps:</p>
+            <p><a href="https://www.mediafire.com/file/129avtkojixlgtj/Clean_App_Xbox.rar/file" target="_blank" class="download-button">Baixar Clean App Xbox.rar</a></p>
 
-        <section>
-            <h2>⚙️ Passo 5: Configuração Inicial</h2>
             <div class="step">
                 <span class="step-number">5</span>
-                <span class="step-title">Configurar o Spoofer</span>
+                <span class="step-title">Desautorizar FiveM no Discord</span>
             </div>
-            <h3>Abra o Programa e Configure:</h3>
-            <ol>
-                <li>Duplo-clique no atalho do Spoofer FiveM</li>
-                <li>Na aba <strong>"Settings"</strong> ou <strong>"Configurações"</strong>:
-                    <ul>
-                        <li>✅ Ative <strong>"Spoof HWID"</strong></li>
-                        <li>✅ Ative <strong>"Spoof MAC Address"</strong></li>
-                        <li>✅ Ative <strong>"Auto-Run on Startup"</strong></li>
-                        <li>✅ Ative <strong>"Randomize HWID"</strong> (se disponível)</li>
-                    </ul>
-                </li>
-                <li>Clique em <strong>"Apply"</strong> ou <strong>"Salvar"</strong></li>
-                <li><strong>Reinicie o PC</strong></li>
-            </ol>
-        </section>
+            <p>No Discord: Configurações → Aplicativos autorizados → Revogue autorização do FiveM (se presente).</p>
 
-        <section>
-            <h2>🎮 Passo 6: Conectar com FiveM</h2>
             <div class="step">
                 <span class="step-number">6</span>
-                <span class="step-title">Usar com FiveM</span>
+                <span class="step-title">Sair da Conta Steam</span>
             </div>
-            <h3>Procedimento:</h3>
+            <p>Saia da conta Steam atual ou crie uma nova (recomendado para reset completo).</p>
+
+            <div class="step">
+                <span class="step-number">7</span>
+                <span class="step-title">Limpar Registros Rockstar e FiveM</span>
+            </div>
+            <p>Execute o cleaner para remover traços de Rockstar Social Club e FiveM:</p>
+            <p><a href="https://www.mediafire.com/file/pmtu8m1yyktnepx/Clean+Fivem.rar/file" target="_blank" class="download-button">Baixar Clean Fivem.rar</a></p>
+
+            <div class="step">
+                <span class="step-number">8</span>
+                <span class="step-title">Executar o Spoofer FiveM</span>
+            </div>
             <ol>
-                <li>Certifique-se de que o Spoofer FiveM está <strong>rodando</strong> (veja na barra de tarefas)</li>
-                <li>Inicie o <strong>FiveM launcher</strong> normalmente</li>
-                <li>Conecte em um servidor (o spoofer já estará ativo)</li>
-                <li>Desfrute do jogo com proteção! ✅</li>
+                <li>Baixe o loader/spoofer: <a href="https://www.mediafire.com/file/8p0p5yfuclikjaq/Fivem+Virtualizer.rar/file" target="_blank" class="download-button">Baixar Loader Spoofer FiveM</a></li>
+                <li>Execute como administrador.</li>
+                <li>Insira a chave fornecida (via bot ou suporte).</li>
+                <li>Aguarde conclusão do spoof (HWID, MAC, registros, etc.).</li>
+                <li><strong>Sequência obrigatória:</strong> 1º Spoofer → 2º Bypass FiveGuard (se o seu loader incluir ou separado).</li>
             </ol>
             <div class="success">
-                <strong>✅ Ativo!</strong> Spoofer protegendo seu HWID durante o FiveM.
+                <strong>✅ Spoof concluído!</strong> Inicie FiveM com nova conta Rockstar/Steam.
             </div>
-        </section>
 
-        <section>
-            <h2>📊 Verificar se está Funcionando</h2>
-            <ul>
-                <li>👁️ Verifique se o ícone do Spoofer está visível na barra de tarefas</li>
-                <li>🔵 Procure por um indicador "Ativo" ou status de conexão</li>
-                <li>📊 Clique no ícone para ver status do Hardware ID (mudará a cada execução)</li>
-                <li>🎮 Se FiveM conecta normalmente, o spoofer está funcionando</li>
-            </ul>
+            <div class="step">
+                <span class="step-number">9</span>
+                <span class="step-title">Usar VPN (Opcional, mas Recomendado)</span>
+            </div>
+            <p>Ative uma VPN confiável para mascarar IP (evite bloqueios por IP). Teste conexão antes de entrar no servidor.</p>
+
         </section>
 
         <section>
             <h2>🐛 Troubleshooting: Problemas Comuns</h2>
-
-            <h3>❌ Problema: "Spoofer não inicia"</h3>
-            <p><strong>Solução:</strong></p>
             <ul>
-                <li>Execute sempre como <strong>Administrador</strong></li>
-                <li>Desative antivírus durante execução</li>
-                <li>Reinstale o programa completamente</li>
-            </ul>
-
-            <h3>❌ Problema: "FiveM não conecta com Spoofer ativo"</h3>
-            <p><strong>Solução:</strong></p>
-            <ul>
-                <li>Aguarde 5 segundos após iniciar o Spoofer antes de abrir FiveM</li>
-                <li>Desative e reative o Spoofer</li>
-                <li>Verifique se a versão é compatível com sua versão de FiveM</li>
-            </ul>
-
-            <h3>❌ Problema: "Servidor diz que estou banido mesmo com Spoofer"</h3>
-            <p><strong>Solução:</strong></p>
-            <ul>
-                <li>Se sua conta está banida, o ban pode ser por IP também</li>
-                <li>Tente usar VPN (cuidado: alguns servidores bloqueiam VPN)</li>
-                <li>A forma mais segura é contactar admins do servidor</li>
-            </ul>
-
-            <h3>❌ Problema: "Erro: Driver not installed"</h3>
-            <p><strong>Solução:</strong></p>
-            <ul>
-                <li>Reinstale o programa</li>
-                <li>Reinicie o PC</li>
-                <li>Certifique-se de rodar como Administrador</li>
+                <li><strong>Spoofer não executa:</strong> Execute como admin, desative AV, reinstale.</li>
+                <li><strong>FiveM detecta ban mesmo após spoof:</strong> Verifique se seguiu todos os cleaners na ordem. Tente nova conta Rockstar/Steam + VPN.</li>
+                <li><strong>Erro de isolamento de núcleo:</strong> Use Defender Control para desativar corretamente.</li>
             </ul>
         </section>
 
         <section>
             <h2>🔒 Dicas de Segurança</h2>
             <ul>
-                <li>🔐 <strong>Sempre mantenha atualizado:</strong> Versões antigas podem não funcionar</li>
-                <li>🛡️ <strong>Reative antivírus:</strong> Após usar o Spoofer</li>
-                <li>📁 <strong>Pasta segura:</strong> Guarde em local protegido</li>
-                <li>🚫 <strong>Não compartilhe:</strong> Com pessoas que você não confia</li>
-                <li>✅ <strong>Cumpra regras:</strong> Respeite as políticas dos servidores</li>
-                <li>🔄 <strong>Backup:</strong> Faça backup das configurações</li>
+                <li>Mantenha o spoofer atualizado (versões antigas podem ser detectadas).</li>
+                <li>Reative antivírus e proteções ao finalizar.</li>
+                <li>Não use contas banidas antigas no mesmo PC.</li>
+                <li>Respeite regras de servidores e TOS da Rockstar/Cfx.re.</li>
             </ul>
-        </section>
-
-        <section>
-            <h2>❤️ Avisos Finais</h2>
-            <p>
-                <strong>Use este programa eticamente!</strong> Se você foi banido de um servidor por cheating ou comportamento ruim, o correto é aceitar a consequência, não contorná-la.
-            </p>
-            <p>
-                Spoofer deve ser usado apenas para:
-            </p>
-            <ul>
-                <li>✅ Proteger privacidade legítima</li>
-                <li>✅ Usar múltiplas contas no mesmo PC</li>
-                <li>✅ Em casos específicos de ban injusto (com consentimento do admin)</li>
-            </ul>
-            <div class="warning">
-                <strong>⚠️ Responsabilidade:</strong> O uso deste software é de sua inteira responsabilidade. Use com ética e respeito à comunidade.
-            </div>
         </section>
 
         <button class="back-button" onclick="window.location.href='index.html'">← Voltar para Home</button>
     </div>
 
     <footer>
-        <p>&copy; 2026 Centro de Recursos Pro. Todos os direitos reservados. Desenvolvido com ❤️ para você | Última atualização: Fevereiro 2026</p>
+        <p>© 2026 Centro de Recursos Pro. Todos os direitos reservados. Última atualização: Fevereiro 2026</p>
     </footer>
 </body>
 </html>

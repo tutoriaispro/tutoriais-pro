@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tutorial Skin Changer - Centro de Recursos Pro</title>
+    <title>Tutorial: Skin Changer - Centro de Recursos Pro</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #0a0015 0%, #1a0033 50%, #000814 100%);
@@ -13,6 +14,7 @@
             min-height: 100vh;
             padding: 20px;
         }
+
         header {
             text-align: center;
             padding: 40px 20px;
@@ -22,288 +24,404 @@
             border-radius: 10px;
             box-shadow: 0 0 25px rgba(157, 0, 255, 0.4);
         }
-        header h1 { font-size: 2.5em; color: #c300ff; text-shadow: 0 0 20px #c300ff; margin-bottom: 10px; }
-        .breadcrumb { color: #b0b0ff; font-size: 0.9em; margin-top: 10px; }
-        .breadcrumb a { color: #00d4ff; text-decoration: none; cursor: pointer; }
+        header h1 {
+            font-size: 2.5em;
+            color: #c300ff;
+            text-shadow: 0 0 20px #c300ff;
+            margin-bottom: 8px;
+        }
+        header p {
+            color: #b0b0ff;
+            font-size: 1.05em;
+            margin-top: 6px;
+        }
+        .breadcrumb {
+            color: #b0b0ff;
+            font-size: 0.9em;
+            margin-top: 14px;
+        }
+        .breadcrumb a {
+            color: #00d4ff;
+            text-decoration: none;
+            cursor: pointer;
+        }
         .breadcrumb a:hover { text-decoration: underline; }
+
         .container { max-width: 900px; margin: 0 auto; }
+
+        /* ── BLOCO DE ALERTA VERMELHO ── */
+        .alerta-obrigatorio {
+            background: rgba(255, 20, 20, 0.08);
+            border: 2px solid #ff4444;
+            border-radius: 12px;
+            padding: 28px 32px;
+            margin-bottom: 32px;
+            box-shadow: 0 0 24px rgba(255, 30, 30, 0.25);
+        }
+        .alerta-obrigatorio h2 {
+            color: #ff5555;
+            font-size: 1.4em;
+            margin-bottom: 18px;
+            border-bottom: 2px solid #ff3333;
+            padding-bottom: 12px;
+            text-shadow: 0 0 12px rgba(255, 60, 60, 0.7);
+        }
+        .alerta-obrigatorio ul {
+            margin-left: 22px;
+            list-style: none;
+            padding: 0;
+        }
+        .alerta-obrigatorio ul li {
+            color: #ffb0b0;
+            line-height: 1.8;
+            margin-bottom: 14px;
+            padding-left: 10px;
+            border-left: 3px solid #ff4444;
+        }
+        .alerta-obrigatorio ul li::before {
+            content: "⚠️ ";
+        }
+        .alerta-obrigatorio ul li strong { color: #ff8888; }
+
+        /* ── SEÇÕES PADRÃO ── */
         section {
             background: rgba(20, 0, 50, 0.4);
             border: 2px solid #9d00ff;
             border-radius: 10px;
             padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 0 15px rgba(157, 0, 255, 0.2);
+            margin-bottom: 28px;
+            box-shadow: 0 0 14px rgba(157, 0, 255, 0.18);
         }
-        h2 { color: #00d4ff; font-size: 1.8em; margin-bottom: 15px; border-bottom: 2px solid #9d00ff; padding-bottom: 10px; text-shadow: 0 0 8px #00d4ff; }
-        h3 { color: #c300ff; font-size: 1.3em; margin-top: 20px; margin-bottom: 10px; text-shadow: 0 0 6px #c300ff; }
-        p { color: #b0b0ff; line-height: 1.6; margin-bottom: 15px; }
-        .warning { background: rgba(255, 80, 80, 0.1); border-left: 4px solid #ff5555; padding: 15px; margin: 20px 0; border-radius: 5px; }
-        .warning strong { color: #ff6666; }
-        .success { background: rgba(0, 212, 255, 0.08); border-left: 4px solid #00d4ff; padding: 15px; margin: 20px 0; border-radius: 5px; }
-        .success strong { color: #00d4ff; }
-        .info { background: rgba(157, 0, 255, 0.1); border-left: 4px solid #9d00ff; padding: 15px; margin: 20px 0; border-radius: 5px; }
-        .info strong { color: #c300ff; }
-        ol, ul { margin-left: 30px; margin-bottom: 15px; color: #b0b0ff; line-height: 1.8; }
+        h2 {
+            color: #00d4ff;
+            font-size: 1.6em;
+            margin-bottom: 18px;
+            border-bottom: 2px solid #9d00ff;
+            padding-bottom: 10px;
+            text-shadow: 0 0 8px #00d4ff;
+        }
+        h3 {
+            color: #c300ff;
+            font-size: 1.15em;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 6px #c300ff;
+        }
+        p {
+            color: #b0b0ff;
+            line-height: 1.7;
+            margin-bottom: 14px;
+        }
+        strong { color: #e0e0ff; }
+
+        ul, ol {
+            margin-left: 26px;
+            margin-bottom: 14px;
+            color: #b0b0ff;
+            line-height: 1.85;
+        }
         li { margin-bottom: 10px; }
-        .step { background: rgba(157, 0, 255, 0.07); border-left: 4px solid #9d00ff; padding: 20px; margin: 20px 0; border-radius: 5px; }
-        .step-number { display: inline-block; background: linear-gradient(135deg, #9d00ff, #00d4ff); color: #fff; width: 35px; height: 35px; border-radius: 50%; text-align: center; line-height: 35px; font-weight: bold; margin-right: 10px; }
-        .step-title { color: #00d4ff; font-size: 1.1em; font-weight: bold; display: inline; }
-        .download-button {
-            display: inline-block;
+
+        /* ── BOXES ── */
+        .info {
+            background: rgba(157, 0, 255, 0.1);
+            border-left: 4px solid #9d00ff;
+            padding: 14px 18px;
+            margin: 18px 0;
+            border-radius: 5px;
+        }
+        .info strong { color: #c300ff; }
+
+        .warning {
+            background: rgba(255, 80, 80, 0.1);
+            border-left: 4px solid #ff5555;
+            padding: 14px 18px;
+            margin: 18px 0;
+            border-radius: 5px;
+        }
+        .warning strong { color: #ff6666; }
+
+        .success {
+            background: rgba(0, 212, 255, 0.08);
+            border-left: 4px solid #00d4ff;
+            padding: 14px 18px;
+            margin: 18px 0;
+            border-radius: 5px;
+        }
+        .success strong { color: #00d4ff; }
+
+        /* ── BADGE PASSO ── */
+        .step-badge {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+        .step-num {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #9d00ff, #00d4ff);
+            color: #fff;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 1.1em;
+            flex-shrink: 0;
+            box-shadow: 0 0 12px rgba(157, 0, 255, 0.6);
+        }
+        .step-label {
+            color: #00d4ff;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-shadow: 0 0 6px #00d4ff;
+        }
+
+        /* ── BOTÃO DE DOWNLOAD ── */
+        .download-btn {
+            display: block;
+            width: fit-content;
+            margin: 22px auto;
             background: linear-gradient(90deg, #9d00ff 0%, #00d4ff 100%);
             color: #fff;
-            padding: 15px 30px;
-            border-radius: 5px;
+            padding: 18px 40px;
+            border-radius: 8px;
             text-decoration: none;
             font-weight: bold;
-            margin: 20px 0;
+            font-size: 1.15em;
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
-            font-size: 1.1em;
+            box-shadow: 0 0 20px rgba(157, 0, 255, 0.55);
+            letter-spacing: 0.5px;
+            text-align: center;
         }
-        .download-button:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(157, 0, 255, 0.8); }
-        video { width: 100%; max-width: 600px; height: auto; border-radius: 10px; margin: 20px auto; display: block; border: 2px solid #9d00ff; }
+        .download-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.8);
+        }
+
+        /* ── CAIXA DE SENHA ── */
+        .senha-destaque {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: rgba(0, 212, 255, 0.08);
+            border: 2px solid #00d4ff;
+            border-radius: 10px;
+            padding: 16px 24px;
+            margin: 18px 0;
+            width: fit-content;
+        }
+        .senha-destaque .label {
+            color: #b0b0ff;
+            font-size: 1em;
+        }
+        .senha-destaque .valor {
+            color: #00d4ff;
+            font-size: 1.6em;
+            font-weight: bold;
+            letter-spacing: 8px;
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.7);
+        }
+
+        /* ── DIVISOR ── */
+        hr { border: none; border-top: 1px solid #3a005a; margin: 32px 0; }
+
+        /* ── CAIXA FINAL ── */
+        .cta-final {
+            background: rgba(157, 0, 255, 0.08);
+            border: 2px solid #9d00ff;
+            border-radius: 10px;
+            padding: 24px 28px;
+            margin: 28px 0;
+            text-align: center;
+            box-shadow: 0 0 16px rgba(157, 0, 255, 0.2);
+        }
+        .cta-final p {
+            font-size: 1.1em;
+            color: #e0e0ff;
+            margin: 0;
+        }
+        .cta-final span {
+            color: #00d4ff;
+            font-weight: bold;
+        }
+
+        /* ── BOTÃO VOLTAR ── */
         .back-button {
             display: inline-block;
             background: linear-gradient(90deg, #9d00ff 0%, #00d4ff 100%);
             color: #fff;
-            padding: 10px 20px;
-            border-radius: 5px;
+            padding: 10px 22px;
+            border-radius: 6px;
             text-decoration: none;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
             font-weight: bold;
+            font-size: 0.95em;
         }
-        .back-button:hover { transform: scale(1.05); box-shadow: 0 0 15px rgba(0, 212, 255, 0.6); }
-        footer { text-align: center; padding: 20px; color: #8080aa; margin-top: 40px; border-top: 1px solid #300066; }
-        code { background: rgba(0, 212, 255, 0.1); color: #00d4ff; padding: 2px 6px; border-radius: 3px; }
+        .back-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.6);
+        }
+
+        footer {
+            text-align: center;
+            padding: 22px;
+            color: #8080aa;
+            margin-top: 40px;
+            border-top: 1px solid #300066;
+            font-size: 0.9em;
+            line-height: 1.7;
+        }
+
         @media (max-width: 768px) {
             header h1 { font-size: 1.8em; }
-            section { padding: 20px; }
-            h2 { font-size: 1.4em; }
+            section, .alerta-obrigatorio { padding: 20px; }
+            h2 { font-size: 1.3em; }
+            .download-btn { width: 100%; padding: 16px 20px; font-size: 1em; }
+            .senha-destaque { flex-direction: column; align-items: flex-start; }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>🎨 Tutorial: Skin Changer</h1>
-        <div class="breadcrumb">
-            <a onclick="window.location.href='index.html'">← Voltar para Home</a> | Atualizado em Fevereiro 2026
-        </div>
-    </header>
 
-    <div class="container">
-        <button class="back-button" onclick="window.location.href='index.html'">← Voltar para Home</button>
+<header>
+    <h1>🎨 Tutorial: Skin Changer</h1>
+    <p>Instruções de Uso e Segurança — ATUALIZADO</p>
+    <div class="breadcrumb">
+        <a onclick="window.location.href='index.html'">← Voltar para Home</a> | Atualizado em Fevereiro 2026
+    </div>
+</header>
 
-        <div style="text-align: center; margin: 30px 0;">
-            <img src="https://media.discordapp.net/attachments/1469467379019944170/1471732268832919593/image.png?ex=6999e43c&is=699892bc&hm=566646746bbc51e17803362edc231908ff5f7f9b1beaa1789aeef419abe0ed2c&=&format=webp&quality=lossless&width=1536&height=864" alt="Skin Changer Tutorial" style="width: 100%; max-width: 600px; border-radius: 10px; border: 2px solid #9d00ff; box-shadow: 0 0 20px rgba(157, 0, 255, 0.4);" onerror="this.style.display='none'" />
-        </div>
+<div class="container">
 
-        <section>
-            <h2>📌 Introdução</h2>
-            <p>
-                Bem-vindo ao tutorial completo do <strong>Skin Changer</strong>! Este é um guia passo-a-passo que vai te ensinar como instalar, configurar e usar o Skin Changer com segurança.
-            </p>
-            <p>
-                Se você é iniciante, não se preocupe! Vamos abordar tudo desde o zero, incluindo como evitar problemas com antivírus e como resolver possíveis erros.
-            </p>
-            <div class="info">
-                <strong>💡 Dica:</strong> Tenha uma conexão estável e 30 minutos livres para seguir este tutorial completamente.
-            </div>
-        </section>
+    <button class="back-button" onclick="window.location.href='index.html'">← Voltar para Home</button>
 
-        <section>
-            <h2>📋 O que você vai aprender</h2>
-            <ul>
-                <li>✅ Como baixar o Skin Changer com segurança</li>
-                <li>✅ Como desativar antivírus sem prejudicar seu PC</li>
-                <li>✅ Instalação passo-a-passo</li>
-                <li>✅ Primeiras configurações</li>
-                <li>✅ Troubleshooting: resolva erros comuns</li>
-                <li>✅ Tomar cuidado com a segurança do seu PC</li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>🔒 Requisitos Mínimos</h2>
-            <ul>
-                <li><strong>Windows 10/11</strong> (64 bits - recomendado)</li>
-                <li><strong>RAM:</strong> Mínimo 4GB (8GB recomendado)</li>
-                <li><strong>Espaço em disco:</strong> 500MB livres</li>
-                <li><strong>Arquivo:</strong> arquivo-skin-changer-vx.x.zip</li>
-                <li><strong>Software:</strong> 7-Zip ou WinRAR para descompactar</li>
-            </ul>
-            <div class="warning">
-                <strong>⚠️ Aviso:</strong> Este tutorial é apenas para fins educacionais. Use por sua conta e risco.
-            </div>
-        </section>
-
-        <section>
-            <h2>📥 Passo 1: Download</h2>
-            <div class="step">
-                <span class="step-number">1</span>
-                <span class="step-title">Faça o Download do Arquivo</span>
-            </div>
-            <p>Clique no botão abaixo para baixar a versão mais recente:</p>
-            <button class="download-button" onclick="alert('Link de download será adicionado em breve. Você receberá via WhatsApp/Email.');">
-                📥 Baixar Skin Changer v3.2
-            </button>
-            <div class="info">
-                <strong>💡 Nota:</strong> O arquivo deve ter o nome similar a: <code>skin-changer-3.2.zip</code>
-            </div>
-        </section>
-
-        <section>
-            <h2>🛡️ Passo 2: Preparar seu Antivírus</h2>
-            <p>
-                O Skin Changer pode disparar alertas em antivírus. Isso é normal! Vamos desativar temporariamente para realizar a instalação.
-            </p>
-
-            <h3>🔹 Windows Defender (Antivírus do Windows):</h3>
-            <ol>
-                <li>Abra o <strong>Configurações</strong> (Tecle Windows + I)</li>
-                <li>Vá para <strong>Privacidade e Segurança</strong></li>
-                <li>Clique em <strong>Proteção contra vírus e ameaças</strong></li>
-                <li>Clique em <strong>Gerenciar configurações</strong></li>
-                <li>Desative a <strong>Proteção em tempo real</strong> (mude o toggle para OFF)</li>
-                <li>Confirme digitando "sim" se pedir</li>
-            </ol>
-
-            <h3>🔹 Outros Antivírus (Avast, AVG, Kaspersky, etc.)</h3>
-            <ol>
-                <li>Abra o seu programa antivírus</li>
-                <li>Procure por "Proteção em tempo real" ou "Real-time Protection"</li>
-                <li>Desative temporariamente</li>
-                <li>Alguns podem pedir uma senha (deixe em branco ou clique "OK")</li>
-            </ol>
-
-            <div class="warning">
-                <strong>⚠️ Importante:</strong> Depois de terminar a instalação, <strong>REATIVE o antivírus</strong>! Deixar desativado deixa seu PC vulnerável.
-            </div>
-        </section>
-
-        <section>
-            <h2>📦 Passo 3: Descompactar o Arquivo</h2>
-            <div class="step">
-                <span class="step-number">3</span>
-                <span class="step-title">Extrair o ZIP</span>
-            </div>
-            <ol>
-                <li>Localize o arquivo <code>skin-changer-3.2.zip</code> onde você baixou (geralmente <strong>Downloads</strong>)</li>
-                <li>Clique <strong>direito</strong> no arquivo → Selecione <strong>"Extrair aqui"</strong> (ou use 7-Zip / WinRAR)</li>
-                <li>Aguarde a extração (pode levar alguns segundos)</li>
-                <li>Uma pasta chamada <strong>skin-changer-3.2</strong> será criada</li>
-            </ol>
-            <div class="success">
-                <strong>✅ Sucesso:</strong> Você agora tem a pasta descompactada!
-            </div>
-        </section>
-
-        <section>
-            <h2>⚙️ Passo 4: Instalação</h2>
-            <div class="step">
-                <span class="step-number">4</span>
-                <span class="step-title">Executar o Instalador</span>
-            </div>
-            <ol>
-                <li>Abra a pasta <strong>skin-changer-3.2</strong></li>
-                <li>Localize o arquivo chamado <strong>Setup.exe</strong></li>
-                <li>Clique <strong>direito</strong> → <strong>"Executar como administrador"</strong></li>
-                <li>Clique <strong>"Sim"</strong> quando perguntado "Deseja permitir que este app faça alterações?"</li>
-                <li>Siga a instalação (ela é automática, leva ~30 segundos)</li>
-                <li>Quando terminar, feche a janela de instalação</li>
-            </ol>
-            <div class="success">
-                <strong>✅ Instalado:</strong> O programa agora está pronto para usar!
-            </div>
-        </section>
-
-        <section>
-            <h2>🎨 Passo 5: Primeiro Uso</h2>
-            <div class="step">
-                <span class="step-number">5</span>
-                <span class="step-title">Iniciar o Skin Changer</span>
-            </div>
-            <ol>
-                <li>Abra o <strong>Menu Iniciar</strong> (tecla Windows)</li>
-                <li>Procure por <strong>"Skin Changer"</strong></li>
-                <li>Clique para abrir</li>
-                <li>Aguarde o programa carregar (primeira vez demora mais)</li>
-                <li>Explore a interface e escolha seu skin favorito!</li>
-            </ol>
-        </section>
-
-        <section>
-            <h2>🐛 Troubleshooting: Problemas Comuns</h2>
-
-            <h3>❌ Problema: "Arquivo corrompido" ou "Não consegue extrair"</h3>
-            <p><strong>Solução:</strong></p>
-            <ul>
-                <li>Baixe novamente o arquivo</li>
-                <li>Certifique-se de usar 7-Zip ou WinRAR (atualizado)</li>
-                <li>Tente extrair em uma pasta diferente (ex: C:\temp\)</li>
-            </ul>
-
-            <h3>❌ Problema: "Windows protegeu seu PC"</h3>
-            <p><strong>Solução:</strong></p>
-            <ul>
-                <li>Clique em <strong>"Informações adicionais"</strong></li>
-                <li>Depois clique em <strong>"Executar assim mesmo"</strong></li>
-                <li>Isto é normal para programas não certificados</li>
-            </ul>
-
-            <h3>❌ Problema: O programa não abre ou trava no início</h3>
-            <p><strong>Solução:</strong></p>
-            <ul>
-                <li>Desinstale completamente (Configurações → Programas → Remover)</li>
-                <li>Reinicie o PC</li>
-                <li>Faça uma nova instalação limpa</li>
-                <li>Se persistir, contate o suporte</li>
-            </ul>
-
-            <h3>❌ Problema: Antivírus bloqueia mesmo desativado</h3>
-            <p><strong>Solução:</strong></p>
-            <ul>
-                <li>Coloque o arquivo em quarentena: pesquise nas configurações do seu antivírus</li>
-                <li>Crie uma exceção/whitelist para a pasta do Skin Changer</li>
-                <li>Tente em Modo de Segurança (F8 ao ligar o PC)</li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>✅ Passo 6: Ativar o Antivírus Novamente</h2>
-            <p>
-                <strong>MUITO IMPORTANTE:</strong> Depois que a instalação está completa, você DEVE reativar a proteção do seu PC!
-            </p>
-            <ul>
-                <li>Volte em <strong>Configurações → Proteção contra vírus</strong></li>
-                <li>Ative a <strong>Proteção em tempo real</strong> novamente</li>
-                <li>Confirme as mudanças</li>
-            </ul>
-            <div class="success">
-                <strong>✅ Completo:</strong> Seu PC está seguro novamente!
-            </div>
-        </section>
-
-        <section>
-            <h2>❤️ Próximos Passos</h2>
-            <ul>
-                <li>Explore todos os skins disponíveis</li>
-                <li>Customize conforme sua preferência</li>
-                <li>Se tiver dúvidas, consulte o suporte técnico</li>
-                <li>Compartilhe este tutorial com amigos</li>
-            </ul>
-        </section>
-
-        <button class="back-button" onclick="window.location.href='index.html'">← Voltar para Home</button>
+    <!-- ═══════════════════════════════════════
+         BLOCO VERMELHO — LEITURA OBRIGATÓRIA
+    ════════════════════════════════════════ -->
+    <div class="alerta-obrigatorio">
+        <h2>🚨 LEITURA OBRIGATÓRIA: REGRAS DE SEGURANÇA MÁXIMA!</h2>
+        <p style="color:#ffb0b0; margin-bottom:18px;">
+            É <strong>EXTREMAMENTE IMPORTANTE</strong> que você siga todas as regras abaixo para evitar suspensão de conta!
+        </p>
+        <ul>
+            <li>Não fale sobre o <strong>Unlock</strong> na partida.</li>
+            <li>Não execute o <strong>Unlock</strong> dentro da partida.</li>
+            <li>
+                Não recomendamos utilizar em <strong>conta smurf com elo mais baixo</strong> que o seu real, pois o
+                <strong>Unlock é indetectável ao Vanguard</strong>, mas ainda pode ser detectado por
+                <strong>análise manual</strong>, caso você gere um <strong>acúmulo de reports</strong> na sua conta,
+                independente do motivo (toxicidade, matar muitos por várias partidas, desconfiança da equipe inimiga, etc.).
+            </li>
+            <li>
+                Recomendamos <strong>não falar no TikTok em live</strong> que você utiliza o Unlock — muitos podem
+                denunciar na maldade. Se for utilizar, <strong>esconda seu nickname</strong>.
+            </li>
+            <li>
+                Não habilite <strong>hyper-v</strong> com o game instalado, nem mexa em <strong>virtualização</strong>.
+                Se for mexer, por favor, contacte a gente antes.
+            </li>
+            <li>
+                Não fique parado na base (AFK) — o pessoal pode denunciar você por isso, e pode pedir para a equipe
+                inimiga te denunciar no bate-papo para todos.
+            </li>
+        </ul>
     </div>
 
-    <footer>
-        <p>&copy; 2026 Centro de Recursos Pro. Todos os direitos reservados. Desenvolvido com ❤️ para você | Última atualização: Fevereiro 2026</p>
-    </footer>
+    <!-- ═══════════════════════
+         GUIA VISUAL
+    ════════════════════════ -->
+    <section>
+        <h2>🎬 Guia Visual Completo</h2>
+        <p>Assista ao guia visual completo para instalação, regras e uso do produto.</p>
+        <div class="info">
+            <strong>💡 Dica:</strong> Siga o vídeo passo a passo junto com as instruções escritas abaixo para garantir uma instalação perfeita e sem erros.
+        </div>
+    </section>
+
+    <!-- ═══════════════════════
+         PASSO 1 — DOWNLOAD
+    ════════════════════════ -->
+    <section>
+        <h2>1️⃣ Download e Preparação</h2>
+
+        <div class="step-badge">
+            <div class="step-num">1</div>
+            <div class="step-label">Faça o Download do Arquivo</div>
+        </div>
+
+        <p>Clique no botão abaixo para baixar o arquivo completo (todos os drivers, Skin Changer e arquivos necessários) e extraia-o usando a senha fornecida.</p>
+
+        <a class="download-btn" href="https://drive.google.com/file/d/1gUKijuaa_rfapt-f89IgdLTfDfkXiZzt/view?usp=sharing" target="_blank">
+            📥 FAZER DOWNLOAD DO SKINCHANGER
+        </a>
+
+        <p>Senha para Extrair:</p>
+        <div class="senha-destaque">
+            <span class="label">🔑 Senha:</span>
+            <span class="valor">123</span>
+        </div>
+
+        <ul style="margin-top: 18px;">
+            <li>Extraia os arquivos utilizando o <strong>WinRar</strong>.</li>
+            <li>Abra a <strong>pasta amarela</strong> extraída por você.</li>
+        </ul>
+
+        <div class="success">
+            <strong>✅ Pronto:</strong> Com a pasta aberta, siga para o próximo passo.
+        </div>
+    </section>
+
+    <!-- ═══════════════════════
+         PASSO 2 — ANTIVÍRUS
+    ════════════════════════ -->
+    <section>
+        <h2>2️⃣ Desative o Antivírus</h2>
+
+        <div class="step-badge">
+            <div class="step-num">2</div>
+            <div class="step-label">Desativar Windows Defender e Antivírus</div>
+        </div>
+
+        <div class="warning">
+            <strong>⚠️ OBRIGATÓRIO:</strong> É OBRIGATÓRIO DESATIVAR SEU ANTIVÍRUS, INCLUINDO O WINDOWS DEFENDER, antes de executar o loader — caso contrário, o arquivo será deletado automaticamente.
+        </div>
+
+        <ul>
+            <li>Na barra de Pesquisa procure por <strong>Segurança do Windows</strong>.</li>
+            <li>Vá em <strong>Proteção contra vírus e ameaças</strong>.</li>
+            <li>Clique em <strong>Gerenciar configurações</strong> e <strong>DESATIVE TODAS as opções</strong> de segurança do Windows.</li>
+            <li>Caso você possua um Antivírus comprado ou baixado da Internet, desinstale usando o <strong>REVO PORTABLE</strong>.</li>
+        </ul>
+
+        <div class="info">
+            <strong>💡 Por que isso é necessário?</strong> O Skin Changer utiliza técnicas que antivírus identificam como suspeito — isso é um <strong>falso positivo</strong>. O arquivo é seguro e verificado.
+        </div>
+    </section>
+
+    <hr>
+
+    <!-- ═══════════════════════
+         MENSAGEM FINAL
+    ════════════════════════ -->
+    <div class="cta-final">
+        <p>🎉 <strong>Bom aproveitamento do changer, galera!</strong><br>
+        Qualquer dúvida ou problema, estamos à disposição para atender vocês via <span>ticket de suporte</span>!</p>
+    </div>
+
+    <button class="back-button" onclick="window.location.href='index.html'">← Voltar para Home</button>
+
+</div>
+
+<footer>
+    <p>&copy; 2026 Centro de Recursos Pro. Todos os direitos reservados. Desenvolvido com ❤️ para você | Última atualização: Fevereiro 2026</p>
+</footer>
+
 </body>
 </html>

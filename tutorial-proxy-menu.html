@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tutorial: Proxy Menu - Centro de Recursos Pro</title>
     <style>
-        /* CSS original mantido */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -99,108 +98,109 @@
 
         <section>
             <h2>📌 Introdução</h2>
-            <p>Bem-vindo ao tutorial completo do <strong>Proxy Menu</strong>! Este é um mod menu avançado para FiveM, com funcionalidades como aimbot, ESP, noclip, teleporte, controle de veículos, armas, admin tools e mais. O acesso e download são **exclusivos para clientes** no servidor oficial do Discord.</p>
-            <p>Este guia cobre preparação do sistema, requisitos (C++ e Sordum), entrada no servidor, cadastro, injeção e uso. Siga a sequência exata.</p>
+            <p>Bem-vindo ao tutorial completo do <strong>Proxy Menu</strong> para FiveM! Este mod menu oferece funcionalidades avançadas (aimbot, ESP, noclip, teleporte, spawn, etc.). O acesso é exclusivo para clientes no servidor oficial do Discord.</p>
+            <p>Antes de tudo, instale corretamente o **Microsoft Visual C++ Redistributable** (pacote All-in-One oficial) e o **Sordum Defender Control** para evitar erros de execução, DLLs faltando ou bloqueios de antivírus.</p>
         </section>
 
         <section>
             <h2>🛡️ Aviso Importante – Fevereiro 2026</h2>
             <div class="warning">
-                <strong>⚠️ Responsabilidade:</strong> O Proxy Menu é um mod menu com funções de cheat para FiveM. O uso viola os Termos de Serviço da Rockstar Games, Cfx.re e FiveM, podendo resultar em ban permanente (HWID, IP, global). FiveGuard e anti-cheat são atualizados constantemente; nenhum método é 100% indetectável. Use apenas em servidores privados com permissão explícita e por sua conta e risco.
+                <strong>⚠️ Responsabilidade:</strong> O Proxy Menu viola os Termos de Serviço da Rockstar, Cfx.re e FiveM. Pode resultar em ban permanente (HWID/IP/global). Use apenas em servidores privados com permissão e por sua conta e risco.
             </div>
         </section>
 
         <section>
-            <h2>🔧 Requisitos</h2>
-            <ul>
-                <li>Windows 10/11 64 bits</li>
-                <li>Privilégios de administrador</li>
-                <li>FiveM e GTA V legítimo instalados</li>
-                <li><strong>Microsoft Visual C++ Redistributable (2015-2022)</strong>: Instale x86 e x64 – <a href="https://aka.ms/vc_redist_x64" target="_blank">Download x64</a> | <a href="https://aka.ms/vc_redist_x86" target="_blank">Download x86</a></li>
-                <li><strong>Sordum Defender Control</strong> (para desativar AV e isolamento de núcleo): <a href="https://www.sordum.org/9480/defender-control-v2-1/" target="_blank">Download Oficial</a></li>
-                <li>Conexão à internet para ativação e injeção</li>
-                <li>Chave de subscrição (fornecida no servidor oficial após compra)</li>
-            </ul>
+            <h2>🔧 Requisitos e Preparação Obrigatória</h2>
+
+            <h3>1. Instalar Microsoft Visual C++ Redistributable (All-in-One)</h3>
+            <p>Este pacote é essencial para rodar o loader sem erros de DLLs faltando (ex: MSVCR140.dll, VCRUNTIME140.dll). Baixe a versão oficial All-in-One do TechPowerUp (atualizada e segura):</p>
+            <p style="text-align: center; margin: 20px 0;">
+                <a href="https://www.techpowerup.com/download/visual-c-redistributable-runtime-package-all-in-one/" target="_blank" class="download-button">Baixar Visual C++ All-in-One (TechPowerUp)</a>
+            </p>
+            <ol>
+                <li>Acesse o link acima e clique em "Download" (escolha a versão mais recente, geralmente ~50-60 MB).</li>
+                <li>Salve o arquivo (ex: VisualCppRedist_AIO_x86_x64.exe).</li>
+                <li>Clique direito no arquivo → "Executar como administrador".</li>
+                <li>Na janela que abrir, marque a opção <strong>"Install All" ou "Instalar Todos"</strong> (inclui 2005 a 2022 x86 e x64).</li>
+                <li>Clique em "Install" e aguarde a conclusão (pode levar 2-5 minutos).</li>
+                <li>Reinicie o PC quando solicitado (obrigatório para aplicar as mudanças).</li>
+            </ol>
+            <div class="success">
+                <strong>✅ Concluído!</strong> O C++ está instalado e o loader do Proxy Menu deve rodar sem erros de bibliotecas.
+            </div>
+
+            <h3>2. Instalar e Configurar Sordum Defender Control</h3>
+            <p>Essa ferramenta desativa temporariamente o Windows Defender (proteção em tempo real e isolamento de núcleo) para evitar bloqueios no loader.</p>
+            <p style="text-align: center; margin: 20px 0;">
+                <a href="https://www.sordum.org/9480/defender-control-v2-1/" target="_blank" class="download-button">Baixar Sordum Defender Control (Oficial)</a>
+            </p>
+            <ol>
+                <li>Baixe o arquivo (DefenderControl.zip ou .exe).</li>
+                <li>Extraia o ZIP (se for o caso) usando 7-Zip ou WinRAR.</li>
+                <li>Clique direito em <strong>DefenderControl.exe</strong> → "Executar como administrador".</li>
+                <li>Na janela simples que abre:
+                    <ul>
+                        <li>Clique no botão <strong>"Disable" ou "Desativar"</strong> (para proteção em tempo real).</li>
+                        <li>Marque também <strong>"Disable Core Isolation / Memory Integrity"</strong> se disponível (evita erro de isolamento de núcleo).</li>
+                    </ul>
+                </li>
+                <li>Confirme com "Yes" ou "Sim" nas mensagens do UAC.</li>
+                <li>Feche o programa (as configurações permanecem até você reativar).</li>
+            </ol>
             <div class="info">
-                <strong>Observação:</strong> Instale o Visual C++ antes de tudo. Use o Defender Control para desativar proteções temporariamente (reative após uso).
+                <strong>Importante:</strong> Reative tudo após usar o Proxy Menu (clique "Enable" no Sordum e reinicie o PC).
             </div>
         </section>
 
         <section>
-            <h2>Passo a Passo: Acesso e Uso</h2>
+            <h2>Passo a Passo: Acesso e Uso do Proxy Menu</h2>
 
             <div class="step">
                 <span class="step-number">1</span>
-                <span class="step-title">Entrar no Servidor Oficial</span>
+                <span class="step-title">Entrar no Servidor Oficial (Exclusivo para Clientes)</span>
             </div>
-            <p>O download e acesso ao Proxy Menu são **exclusivos para membros** do servidor oficial do Discord. Clique no link abaixo para entrar:</p>
+            <p>O download do loader e chave são liberados apenas para membros do servidor oficial:</p>
             <p style="text-align: center; margin: 20px 0;">
                 <a href="https://discord.gg/WNNKFjrYn5" target="_blank" class="download-button">Entrar no Servidor Oficial do Proxy Menu</a>
             </p>
             <div class="info">
-                <strong>Importante:</strong> Após entrar, vá para o canal de downloads ou abra um ticket de suporte para obter o loader ("Proxader" ou similar) e sua chave de ativação (apenas para clientes pagos/exclusivos). Não baixe de fontes externas.
+                Após entrar, vá ao canal de downloads ou abra ticket para receber o loader e sua chave (exclusivo para clientes pagos).
             </div>
 
             <div class="step">
                 <span class="step-number">2</span>
-                <span class="step-title">Preparar o Sistema</span>
+                <span class="step-title">Cadastro e Login no Loader</span>
             </div>
             <ol>
-                <li>Instale Microsoft Visual C++ Redistributable (x86 e x64).</li>
-                <li>Baixe e execute Sordum Defender Control: desative proteção em tempo real e isolamento de núcleo.</li>
-                <li>Desative qualquer antivírus de terceiros temporariamente.</li>
+                <li>Execute o loader como administrador.</li>
+                <li>Registre-se (crie usuário/senha) → clique "Register".</li>
+                <li>Faça login (marque "Remember") → clique "Log In".</li>
             </ol>
 
             <div class="step">
                 <span class="step-number">3</span>
-                <span class="step-title">Cadastro e Login no Loader</span>
+                <span class="step-title">Injeção no FiveM</span>
             </div>
             <ol>
-                <li>Execute o loader baixado do servidor oficial como administrador.</li>
-                <li>Na aba de registro: crie usuário e senha → clique "Register".</li>
-                <li>Na aba de login: insira suas credenciais, marque "Remember" → clique "Log In".</li>
+                <li>Abra o FiveM.</li>
+                <li>No loader, clique no ícone "Prox" → depois no botão de injeção ("Prox Executor").</li>
+                <li>Aguarde conclusão (menu aparece no jogo).</li>
             </ol>
 
             <div class="step">
                 <span class="step-number">4</span>
-                <span class="step-title">Injeção no FiveM</span>
-            </div>
-            <ol>
-                <li>Abra o FiveM normalmente.</li>
-                <li>No loader, clique no ícone "Prox" → depois no ícone de download/injeção para carregar o "Prox Executor".</li>
-                <li>Aguarde a injeção concluir (o menu aparecerá no jogo).</li>
-            </ol>
-
-            <div class="step">
-                <span class="step-number">5</span>
-                <span class="step-title">Usar o Proxy Menu</span>
-            </div>
-            <p>Tecla padrão para abrir/fechar o menu: roda do mouse para dentro (pode ser alterada em binds).</p>
-            <ul>
-                <li>Aimbot/ESP: Aimbot suave, ESP com nomes/vida/armas, block input.</li>
-                <li>Movimento: Noclip, super run, teleporte (salvo/mapa).</li>
-                <li>Veículos/Armas: Spawn veículos, tunagem infinita, munição sem recuo.</li>
-                <li>Jogadores: TP para jogador, glitch, puxar, chuva de carros.</li>
-                <li>Visual/Admin: Visão noturna/térmica, admins list, FOV changer.</li>
-            </ul>
-
-            <div class="step">
-                <span class="step-number">6</span>
                 <span class="step-title">Vídeo Tutorial Oficial</span>
             </div>
-            <p>Assista ao vídeo completo ensinando cadastro, injeção e uso prático:</p>
-            <iframe src="https://www.youtube.com/embed/diq3LIInk9I?start=2" title="Tutorial Proxy Menu FiveM - Cadastro, Injeção e Uso" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            <div class="info">
-                <strong>Duração aproximada:</strong> ~20 minutos | Foco: Registro no loader, injeção no FiveM e demonstração das funções principais.
-            </div>
+            <p>Assista ao vídeo completo (cadastro, injeção e uso):</p>
+            <iframe src="https://www.youtube.com/embed/diq3LIInk9I?start=2" title="Tutorial Proxy Menu FiveM" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </section>
 
         <section>
             <h2>🐛 Troubleshooting</h2>
             <ul>
-                <li><strong>Loader não abre/injeta:</strong> Verifique instalação de C++, execute como admin, desative AV via Sordum.</li>
-                <li><strong>Erro de chave/injeção:</strong> Confirme chave válida no ticket do servidor oficial.</li>
-                <li><strong>Ban detectado:</strong> Use conta smurf para testes, evite funções óbvias em servidores públicos.</li>
+                <li><strong>Erro de DLLs faltando:</strong> Reinstale Visual C++ All-in-One e reinicie o PC.</li>
+                <li><strong>Loader bloqueado:</strong> Use Sordum para desativar Defender corretamente.</li>
+                <li><strong>Injeção falha:</strong> Abra FiveM primeiro, verifique chave válida no servidor oficial.</li>
             </ul>
         </section>
 
@@ -208,9 +208,8 @@
             <h2>🔒 Dicas de Segurança</h2>
             <ul>
                 <li>Acesse apenas pelo servidor oficial[](https://discord.gg/WNNKFjrYn5).</li>
-                <li>Não compartilhe login/chave (vinculado ao PC).</li>
-                <li>Reative proteções do Windows após uso.</li>
-                <li>Teste em ambiente controlado antes de usar em contas principais.</li>
+                <li>Reative Defender e AV após uso.</li>
+                <li>Teste com conta smurf antes de contas principais.</li>
             </ul>
         </section>
 
